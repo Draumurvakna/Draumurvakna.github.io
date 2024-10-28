@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://draumurvakna.github.io/2022/04/11/How-I-set-up-my-blog-site/</loc>
+    
+    <lastmod>2024-10-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://draumurvakna.github.io/2022/04/04/Hexo-start/</loc>
+    
+    <lastmod>2024-10-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  <url>
+    <loc>http://draumurvakna.github.io/</loc>
+    <lastmod>2024-10-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>http://draumurvakna.github.io/tags/Hexo/</loc>
+    <lastmod>2024-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://draumurvakna.github.io/tags/Github/</loc>
+    <lastmod>2024-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://draumurvakna.github.io/tags/Javascript/</loc>
+    <lastmod>2024-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://draumurvakna.github.io/tags/HTML/</loc>
+    <lastmod>2024-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://draumurvakna.github.io/tags/Web/</loc>
+    <lastmod>2024-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>http://draumurvakna.github.io/categories/Note/</loc>
+    <lastmod>2024-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+</urlset>
