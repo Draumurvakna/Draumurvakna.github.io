@@ -1,9 +1,0 @@
-http://draumurvakna.github.io/2022/04/11/How-I-set-up-my-blog-site/
-http://draumurvakna.github.io/2022/04/04/Hexo-start/
-http://draumurvakna.github.io/
-http://draumurvakna.github.io/tags/Hexo/
-http://draumurvakna.github.io/tags/Github/
-http://draumurvakna.github.io/tags/Javascript/
-http://draumurvakna.github.io/tags/HTML/
-http://draumurvakna.github.io/tags/Web/
-http://draumurvakna.github.io/categories/Note/
