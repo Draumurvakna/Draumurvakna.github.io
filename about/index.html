@@ -35,16 +35,17 @@
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  
 
-  <meta name="description" content="上海中学→上海交通大学凯原法学院→香港大学 脚踏实地的理想主义者，相信扎实的梦 个人公众号“集闲殿”，欢迎来玩！">
+  <meta name="description" content=":root {   --primary: #2E4053;   --secondary: #5D6D7E;   --accent: linear-gradient(135deg, #AED6F1 0%, #D2B4DE 100%);   --shadow: 0 10px 30px rgba(0,0,0,0.1); }  .edu-section {   max-width: 800px;   m">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ABOUT">
 <meta property="og:url" content="http://example.com/about/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="上海中学→上海交通大学凯原法学院→香港大学 脚踏实地的理想主义者，相信扎实的梦 个人公众号“集闲殿”，欢迎来玩！">
+<meta property="og:description" content=":root {   --primary: #2E4053;   --secondary: #5D6D7E;   --accent: linear-gradient(135deg, #AED6F1 0%, #D2B4DE 100%);   --shadow: 0 10px 30px rgba(0,0,0,0.1); }  .edu-section {   max-width: 800px;   m">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-29T07:08:05.000Z">
-<meta property="article:modified_time" content="2025-03-11T06:37:27.982Z">
+<meta property="article:published_time" content="2025-03-11T21:03:39.139Z">
+<meta property="article:modified_time" content="2025-03-11T21:03:39.139Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -218,7 +219,7 @@
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2024-10-29T07:08:05.000Z" itemprop="datePublished">2024-10-29</time>
+  <time class="dt-published" datetime="2025-03-11T21:03:39.139Z" itemprop="datePublished">2025-03-12</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
@@ -229,17 +230,318 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            54 words 
+            3.9k words 
           </div>
         </div>
         
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <p>上海中学→上海交通大学凯原法学院→香港大学</p>
-<p>脚踏实地的理想主义者，相信扎实的梦</p>
-<p>个人公众号“集闲殿”，欢迎来玩！</p>
+          <style>
+:root {
+  --primary: #2E4053;
+  --secondary: #5D6D7E;
+  --accent: linear-gradient(135deg, #AED6F1 0%, #D2B4DE 100%);
+  --shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
 
+.edu-section {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+
+.edu-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.edu-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--primary);
+}
+
+.edu-card:hover {
+  transform: translateY(-3px);
+}
+
+.edu-card h3 {
+  color: #2d3436;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.edu-time {
+  color: #636e72;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.edu-card p:not(.edu-time) {
+  color: #57606f;
+  line-height: 1.6;
+}
+
+/* ====== 实习经历 ====== */
+.exp-section {
+  max-width: 1200px;
+  margin: 6rem auto 3rem;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.exp-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.exp-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent);
+}
+
+.company-header {
+  padding-left: 50px;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.company-header::before {
+  content: '💼';
+  position: absolute;
+  left: 0;
+  top: -5px;
+  font-size: 2em;
+  opacity: 0.2;
+}
+
+.position-tag {
+  background: #F2F4F6;
+  color: var(--primary);
+  padding: 6px 15px;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 1rem 0;
+  font-size: 0.95em;
+}
+
+ul.responsibilities {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.responsibilities li {
+  position: relative;
+  padding-left: 1.8em;
+  margin: 1.2em 0;
+  line-height: 1.6;
+  color: #4A5568;
+}
+
+ul.responsibilities li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 8px;
+  height: 8px;
+  background: var(--primary);
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+/* ====== 交互效果 ====== */
+.exp-card:hover {
+  transform: translateY(-8px) rotate(1deg);
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.25);
+}
+
+.exp-card:hover li::before {
+  transform: scale(1.3);
+  background: #AED6F1;
+}
+
+.detail-column:hover {
+  transform: translateY(-5px);
+}
+
+/* ====== 响应式优化 ====== */
+@media (max-width: 992px) {
+  .edu-timeline::before {
+    left: 40px;
+  }
+
+  .edu-card {
+    grid-template-columns: 1fr;
+    margin-left: 60px;
+  }
+
+  .time-column {
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+
+  .dot-container {
+    left: -50px;
+    right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .exp-section {
+    grid-template-columns: 1fr;
+  }
+
+  .edu-timeline,
+  .exp-section {
+    padding: 0 1rem;
+  }
+
+  .edu-card,
+  .exp-card {
+    padding: 1.5rem;
+  }
+
+  .company-header::before {
+    font-size: 1.5em;
+  }
+}
+
+.meta-info {
+  color: #718096;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0.5rem 0;
+}
+</style>
+
+<!-- 教育背景 -->
+<div class="edu-section">
+  <h2 style="color: var(--primary); margin-bottom: 2rem;">📚 教育背景</h2>
+
+  <div class="edu-card">
+    <h3>香港大学</h3>
+    <p class="edu-time">2024/09-2025/07</p>
+    <p>仲裁与争议解决法硕士</p>
+  </div>
+
+   <div class="edu-card">
+    <h3>上海交通大学</h3>
+    <p class="edu-time">2020/09-2024/06</p>
+    <p>法学-经济学（双学位）</p>
+  </div>
+
+  <div class="edu-card">
+    <h3>上海中学</h3>
+    <p class="edu-time">2017/09-2020/07</p>
+  </div>
+</div>
+
+<!-- 实习经历 -->
+<div class="exp-section">
+  <h2 style="grid-column: 1 / -1; color: var(--primary); margin: 2rem 0;">💻 实习经历</h2>
+
+  <!-- OPPO -->
+  <div class="exp-card">
+    <div class="company-header">
+      <h3>广东欧珀移动通信有限公司（OPPO）</h3>
+      <p class="meta-info">2024/06-2024/09 | 深圳</p>
+    </div>
+    <div class="position-tag">涉外法务组实习生</div>
+    <ul class="responsibilities">
+      <li>中东非区域：输出加纳等五国AI法律检测报告、负责以色列实体注销、阿联酋人力外包落地</li>
+      <li>中国区：OPPO商城电信诈骗问题、租赁平台刷机问题调研处理；合同审核（一件代发、直播推广、战略合作等类目）</li>
+      <li>诉讼事项：深度参与某重大反不正当竞争案的应诉及反制，进行国内外类案检索、法律依据梳理、案例数据库整理等工作，撰写呈递给监管部门的说明材料（PPT、报告等）；输出的各类文档字数达267,547</li>
+      <li>其他事务：代理合规框架搭建、合规PPT制作、知识管理</li>
+    </ul>
+  </div>
+
+  <!-- 莉莉丝 -->
+  <div class="exp-card">
+    <div class="company-header">
+      <h3>上海莉莉丝网络科技有限公司</h3>
+      <p class="meta-info">2023/10-2024/05 | 上海</p>
+    </div>
+    <div class="position-tag">经营合规组实习生</div>
+    <ul class="responsibilities">
+      <li>内容审核：与广告投放部门密切合作，负责公司海内外游戏的视频广告、海报审核；游戏日常活动素材文案内容审核；版号申请包体策划文档、美术素材审核</li>
+      <li>经营合规：回复多项合规咨询，涵盖知识产权侵权、数据隐私保护、概率公示、未成年人防沉迷等方面；角色交易行海外上线合规事宜；SLG游戏玩法合股审查报告；撰写了多项内部合规SOP</li>
+      <li>工商变更：负责公司某项目组的持股平台变更事宜，准备变更材料、完成手续办理</li>
+      <li>合同审核：负责境内外保密协议、美术订单、版权采购等协议的审核、起草等工作</li>
+    </ul>
+  </div>
+
+  <!-- 金杜律师事务所 -->
+  <div class="exp-card">
+    <div class="company-header">
+      <h3>北京市金杜律师事务所上海分所</h3>
+      <p class="meta-info">2023/07-2023/10 | 上海</p>
+    </div>
+    <div class="position-tag">私募并购组实习生</div>
+    <ul class="responsibilities">
+      <li>代表投资人对某生物科技公司、某新能源电动车公司、某OLED材料公司进行尽调：准备访谈清单、就法律问题进行检索或咨询当地主管部门、撰写尽调报告、进行网络核查、协助完成项目交割</li>
+      <li>代表被收购方准备交易文件：草拟境内公司及开曼、英属维尔京群岛子公司股东会、董事会决议及认股凭证等文件，指导公司完成工商手续等事宜，协助完成项目交割</li>
+      <li>常规工作：完成各类PPT制作、会议纪要、知识管理等</li>
+    </ul>
+  </div>
+  <!-- 其他实习卡片 -->
+
+  <!-- 金杜律师事务所 -->
+  <div class="exp-card">
+    <div class="company-header">
+      <h3>北京市金杜律师事务所上海分所</h3>
+      <p class="meta-info">2023/01-2023/03 | 上海</p>
+    </div>
+    <div class="position-tag">融资组实习生</div>
+    <ul class="responsibilities">
+      <li>代表管理人对原始权益人的底层资产进行核查并撰写法律意见书：完成资产抽样，通过尽调材料、访谈、网络核查等方式核查融资租赁、小额贷款等底层资产的真实性、现金流分散程度和稳定性，判断基础资产的变现价值，撰写法律意见书</li>
+      <li>准备ABS、ABN项目全套交易文件：参与电话会并就谈判结果对交易文件进行多轮修改</li>
+      <li>常规工作：常法业务邮件撰写、项目统计、依券商客户委托完成PPT、协助团队完成专业文章的撰写等</li>
+    </ul>
+  </div>
+
+  <!-- 金杜律师事务所 -->
+  <div class="exp-card">
+    <div class="company-header">
+      <h3>上海洲铂智能科技发展有限公司（智物资本）</h3>
+      <p class="meta-info">2022/06-2022/09 | 上海</p>
+    </div>
+    <div class="position-tag">投资实习生</div>
+    <ul class="responsibilities">
+      <li>投资工作：参与路演或与创始人访谈沟通、判断项目投资价值并制作One Pager供内部投资会使用、审核NDA及TS条款、业务尽调（某激光显示公司）、完成半导体及射频芯片的行研报告</li>
+      <li>招商工作：代表公司参与政府路演、参与公司与当地发改委的洽谈会并协助推进谈判、依公司委托制作BP；代表政府判断公司综合情况、与公司创始人进行谈判，进行政策申报工作</li>
+      <li>常规工作：运营公司公众号（日更），整理产业园、政府投资情况等数据，每日跟踪投融资事件动态</li>
+    </ul>
+  </div>
+
+</div>
         
       </div>
 
