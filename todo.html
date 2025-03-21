@@ -30,18 +30,22 @@
 
 
   
-  <title>Tag: 美国 | Migao&#39;s Blog</title>
+  <title>Migao&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="TODO              :root {             --primary-color: #8AA2A9;             --secondary-color: #6B818C;             --accent-color: #A3B4C8;             --background-color: #F0F4F7;">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Migao&#39;s Blog">
-<meta property="og:url" content="https://draumurvakna.github.io/tags/%E7%BE%8E%E5%9B%BD/index.html">
+<meta property="og:url" content="https://draumurvakna.github.io/todo.html">
 <meta property="og:site_name" content="Migao&#39;s Blog">
+<meta property="og:description" content="TODO              :root {             --primary-color: #8AA2A9;             --secondary-color: #6B818C;             --accent-color: #A3B4C8;             --background-color: #F0F4F7;">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-03-21T11:41:25.311Z">
+<meta property="article:modified_time" content="2025-03-21T11:41:25.311Z">
 <meta property="article:author" content="lxg">
 <meta name="twitter:card" content="summary">
   
@@ -231,63 +235,424 @@
     <div id="content-body">
        
 
-<div class="archive-main-card">
-    <div class="archive-top">
-      <div class="main-title-bar">
-        <div class="main-title-dot"></div>
-        <h1 class="article-title">Archives</h1>
-      </div>    
+
+<article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        Untitled
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-21T11:41:25.311Z" itemprop="datePublished">2025-03-21</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4.9k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+    <style>
+        :root {
+            --primary-color: #8AA2A9;
+            --secondary-color: #6B818C;
+            --accent-color: #A3B4C8;
+            --background-color: #F0F4F7;
+            --text-color: #4A4A4A;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Microsoft YaHei', sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid var(--primary-color);
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-1px);
+        }
+
+        .task-list {
+            margin: 2rem 0;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .task-item:hover {
+            transform: translateX(5px);
+        }
+
+        .task-item.completed {
+            opacity: 0.7;
+            border-left-color: var(--accent-color);
+        }
+
+        .archive-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .archive-month {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background-color: var(--background-color);
+            border-radius: 4px;
+            transition: transform 0.2s ease;
+        }
+
+        .archive-month:hover {
+            transform: translateX(5px);
+        }
+
+        .task-count {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.9em;
+        }
+
+        /* 新增统计样式 */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 1.5rem 0;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin: 5px 0;
+        }
+
+        /* 新增任务分类标题 */
+        .task-category {
+            color: var(--secondary-color);
+            padding: 10px 0;
+            margin: 1.5rem 0 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        /* 时间输入框样式 */
+        .time-input {
+        padding: 10px;
+        border: 2px solid var(--primary-color);
+        border-radius: 6px;
+        font-family: inherit;
+        background: white;
+        color: var(--text-color);
+        }
+
+        /* 任务时间显示样式 */
+        .task-time {
+        font-size: 0.85em;
+        color: var(--secondary-color);
+        margin-left: 15px;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 TODO</h1>
+        
+        <div class="input-group">
+          <input type="text" id="taskInput" placeholder=" (!! ˃ θ ˂̥̥ )冲鸭...">
+          <!-- 新增时间输入框 -->
+          <input type="datetime-local" id="dueDate" class="time-input">
+          <button onclick="addTask()">添加任务</button>
+      </div>
+
+        <!-- 新增统计信息 -->
+        <div class="stats-container">
+          <div class="stat-box">
+              <div>总计任务</div>
+              <div class="stat-number" id="totalCount">0</div>
+          </div>
+          <div class="stat-box">
+              <div>进行中</div>
+              <div class="stat-number" id="activeCount">0</div>
+          </div>
+          <div class="stat-box">
+              <div>已完成</div>
+              <div class="stat-number" id="completedCount">0</div>
+          </div>
+      </div>
+
+      <!-- 修改后的任务列表区域 -->
+      <div class="task-list">
+          <h3 class="task-category">🏃 进行中的任务</h3>
+          <div id="activeTasks"></div>
+          
+          <h3 class="task-category">✅ 已完成的任务</h3>
+          <div id="completedTasks"></div>
+      </div>
+
+        <div class="archive-section">
+            <h2>📦 任务归档统计</h2>
+            <div id="monthlyArchive"></div>
+        </div>
+    </div>
+
+    <script>
+        // 初始化任务数据（带示例数据）
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [
+            { 
+                id: Date.now(), 
+                text: "示例任务（点击完成）", 
+                completed: false,
+                completedDate: null
+            }
+        ];
+
+        // 初始化渲染
+        renderTasks();
+        generateMonthlyArchive();
+
+        // 添加任务
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            const dueDateInput = document.getElementById('dueDate');
+            if (input.value.trim()) {
+                tasks.push({
+                    id: Date.now(),
+                    text: input.value.trim(),
+                    dueDate: dueDateInput.value, // 新增时间属性
+                    completed: false,
+                    completedDate: null
+                });
+                input.value = '';
+                dueDateInput.value = ''; // 清空时间输入
+                saveAndUpdate();
+            }
+        }
+        
+
+        // 修改后的渲染函数
+        function renderTasks() {
+            // 分离任务列表
+            const activeTasks = tasks.filter(t => !t.completed);
+            const completedTasks = tasks.filter(t => t.completed);
+            
+            // 更新统计数字
+            document.getElementById('totalCount').textContent = tasks.length;
+            document.getElementById('activeCount').textContent = activeTasks.length;
+            document.getElementById('completedCount').textContent = completedTasks.length;
+
+            // 渲染进行中任务
+            document.getElementById('activeTasks').innerHTML = activeTasks.map(task => `
+                <div class="task-item" data-id="${task.id}">
+                    <input type="checkbox" 
+                           checked 
+                           onchange="toggleTask(${task.id})">
+                    <span>${task.text}</span>
+                    <span class="task-time">⏰ ${formatDueDate(task.dueDate)}</span>
+                    <button onclick="deleteTask(${task.id})" 
+                            style="margin-left: auto; padding: 6px 12px;">删除</button>
+                </div>
+            `).join('');
+
+            // 渲染已完成任务
+            document.getElementById('completedTasks').innerHTML = completedTasks.map(task => `
+                <div class="task-item completed" data-id="${task.id}">
+                    <input type="checkbox" 
+                           checked 
+                           onchange="toggleTask(${task.id})">
+                    <span>${task.text}</span>
+                    <button onclick="deleteTask(${task.id})" 
+                            style="margin-left: auto; padding: 6px 12px;">删除</button>
+                </div>
+            `).join('');
+        }
+
+        // 切换任务状态
+        function toggleTask(id) {
+            const task = tasks.find(t => t.id === id);
+            if (task) {
+                task.completed = !task.completed;
+                task.completedDate = task.completed ? new Date().toISOString().split('T')[0] : null;
+                saveAndUpdate();
+            }
+        }
+
+        // 删除任务
+        function deleteTask(id) {
+            tasks = tasks.filter(t => t.id !== id);
+            saveAndUpdate();
+        }
+
+        // 生成归档统计
+        function generateMonthlyArchive() {
+            const archive = tasks.reduce((acc, task) => {
+                if (task.completed && task.completedDate) {
+                    const month = task.completedDate.slice(0, 7);
+                    acc[month] = (acc[month] || 0) + 1;
+                }
+                return acc;
+            }, {});
+
+            const archiveContainer = document.getElementById('monthlyArchive');
+            archiveContainer.innerHTML = Object.entries(archive)
+                .sort((a, b) => b[0].localeCompare(a[0]))
+                .map(([month, count]) => `
+                    <div class="archive-month">
+                        <span class="month-label">${formatMonth(month)}</span>
+                        <span class="task-count">${count} 项</span>
+                    </div>
+                `).join('');
+        }
+
+        // 辅助函数：日期格式化
+        function formatMonth(ym) {
+            const [year, month] = ym.split('-');
+            const monthNames = ["一月", "二月", "三月", "四月", "五月", "六月",
+                             "七月", "八月", "九月", "十月", "十一月", "十二月"];
+            return `${year}年 ${monthNames[parseInt(month)-1]}`;
+        }
+        
+        // 新增的截止时间格式化函数
+        function formatDueDate(isoString) {
+            if (!isoString) return '未设置';
+            const date = new Date(isoString);
+            return `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2,'0')}-${date.getDate().toString().padStart(2,'0')} ${date.getHours().toString().padStart(2,'0')}:${date.getMinutes().toString().padStart(2,'0')}`;
+        }
+        
+        // 保存数据并更新界面
+        function saveAndUpdate() {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            renderTasks();
+            generateMonthlyArchive();
+        }
+
+        // 回车添加任务
+        document.getElementById('taskInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addTask();
+        });
+    </script>
+</body>
+</html>
+        
+      </div>
+
+         
     </div>
     
-    
-      
-      
-        
-        <div class="year-line">
-            <div class="year-num">2024</div>
-            <div class="dot-wrapper">
-                <div class="dot"></div>
-            </div>
-            <div class="article-count">2 articles</div>
-        </div>
-      
-      <a class="archive-article-link" href="/2024/12/17/%E5%BF%AB%E9%80%9F%E6%A3%80%E8%A7%86%E7%9A%84%E5%8E%9F%E7%BD%AA/" title="快速检视（Quick Look）的“原罪” ">
-        <div class="date">12-17</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    快速检视（Quick Look）的“原罪” 
-                
-            </div>
-        </div>
-        <div class="tags">
-            #反垄断 #涉外 #美国
-        </div>
-      </a>
-    
-      
-      
-      <a class="archive-article-link" href="/2024/12/17/Antitrustia%E8%BF%9E%E9%94%81%E5%8C%BB%E9%99%A2%E7%9A%84%E5%8F%8D%E7%AB%9E%E4%BA%89%E8%A1%8C%E4%B8%BA/" title="Antitrustia连锁医院的反竞争行为">
-        <div class="date">12-17</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    Antitrustia连锁医院的反竞争行为
-                
-            </div>
-        </div>
-        <div class="tags">
-            #反垄断 #涉外 #美国
-        </div>
-      </a>
-    
+     
   </div>
+  
+    
+
+  
+</article>
+
+
+  
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <div id="comment-card" class="comment-card">
+    <div class="main-title-bar">
+      <div class="main-title-dot"></div>
+      <div class="main-title">Comments </div>
+    </div>
+    <div id="vcomments"></div>
+  </div>
+  <script>
+      new Valine({"enable":true,"appId":"d11b0rzmnr3P1GXZJHaOnfZg-gzGzoHsz","appKey":"jIiUmjPo1tMCjSeccu3gIDEQ","placeholder":"说点什么~","pageSize":10,"highlight":true,"serverURLs":null,"el":"#vcomments"});
+  </script>
+
+
+
+
+
     </div>
     <div id="footer-wrapper">
       <footer id="footer">
