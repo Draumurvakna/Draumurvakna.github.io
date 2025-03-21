@@ -46,7 +46,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://draumurvakna.github.io/images/fengmian/640.gif">
 <meta property="article:published_time" content="2025-03-20T20:07:24.550Z">
-<meta property="article:modified_time" content="2025-03-21T06:03:25.980Z">
+<meta property="article:modified_time" content="2025-03-21T06:05:58.804Z">
 <meta property="article:author" content="lxg">
 <meta property="article:tag" content="糕sama">
 <meta name="twitter:card" content="summary">
@@ -290,7 +290,8 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <style>
+          <p>使用说明：通过右上角登陆后，任务可以实现多端同步；如果不登录，任务将会保存在本地浏览器，别人不会看到哦~</p>
+<style>
 /* 现代玻璃拟态风格 */
 .todo-container {
   max-width: 800px;
@@ -567,13 +568,13 @@ async function syncWithGitHub() {
     `https://api.github.com/repos/${GH_CONFIG.repoOwner}/${GH_CONFIG.repoName}/issues/${GH_CONFIG.issueNumber}/comments`,
     { headers: { Authorization: `token ${ghToken}` } }
   );
-  
+
   // 合并本地与远程数据
   const localTodos = JSON.parse(localStorage.getItem('hexo-todos') || []);
   const merged = [...new Map(
     [...localTodos, ...await remoteData.json()].map(t => [t.id, t])
   ).values()];
-  
+
   localStorage.setItem('hexo-todos', JSON.stringify(merged));
 }
 
@@ -581,9 +582,9 @@ async function syncWithGitHub() {
 async function addTodo() {
   const taskInput = document.getElementById('new-task');
   const dateInput = document.getElementById('task-date');
-  
+
   // 数据验证（保持原有逻辑）
-  
+
   const newTodo = {
     id: `todo_${Date.now()}`,
     text: taskInput.value.trim(),
