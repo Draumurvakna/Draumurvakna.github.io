@@ -46,7 +46,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://draumurvakna.github.io/images/fengmian/640.gif">
 <meta property="article:published_time" content="2025-03-20T20:07:24.550Z">
-<meta property="article:modified_time" content="2025-03-21T05:10:44.223Z">
+<meta property="article:modified_time" content="2025-03-21T06:03:25.980Z">
 <meta property="article:author" content="lxg">
 <meta property="article:tag" content="糕sama">
 <meta name="twitter:card" content="summary">
@@ -281,7 +281,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            5.3k words 
+            5.4k words 
           </div>
         </div>
         
@@ -553,11 +553,11 @@ const GH_CONFIG = {
 let ghToken = localStorage.getItem('gh_token');
 
 async function loginWithGitHub() {
-  const redirectUri = encodeURIComponent(window.location.origin + '/auth_callback.html');
-  window.location = `https://github.com/login/oauth/authorize?
-    client_id=${GH_CONFIG.clientId}&
-    redirect_uri=${redirectUri}&
-    scope=repo`;
+const redirectUri = encodeURIComponent('https://draumurvakna.github.io/auth_callback.html');
+window.location = `https://github.com/login/oauth/authorize?
+  client_id=${GH_CONFIG.clientId}&
+  redirect_uri=${redirectUri}&
+  scope=repo`;
 }
 
 // ========== 同步逻辑 ==========
