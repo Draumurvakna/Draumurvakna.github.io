@@ -46,7 +46,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://draumurvakna.github.io/images/fengmian/640.gif">
 <meta property="article:published_time" content="2025-03-20T20:07:24.550Z">
-<meta property="article:modified_time" content="2025-03-21T06:19:29.147Z">
+<meta property="article:modified_time" content="2025-03-21T06:29:44.771Z">
 <meta property="article:author" content="lxg">
 <meta property="article:tag" content="糕sama">
 <meta name="twitter:card" content="summary">
@@ -572,7 +572,7 @@ async function syncWithGitHub() {
   );
 
   const comments = await response.json();
-  console.log("GitHub 获取的评论：", comments);
+  console.log("GitHub 获取的评论数据：", comments); // **打印 GitHub 返回的数据**
 
   // **解析 JSON 格式的评论**
   const parsedTodos = comments
@@ -580,10 +580,11 @@ async function syncWithGitHub() {
       try {
         return JSON.parse(comment.body); // 解析 JSON
       } catch (e) {
+        console.log("解析失败的评论：", comment.body); // **打印错误的评论**
         return null; // 解析失败，跳过
       }
     })
-    .filter(todo => todo !== null); // 过滤无效数据
+    .filter(todo => todo !== null); // 过滤掉无效数据
 
   console.log("解析后的待办事项：", parsedTodos);
 
@@ -591,6 +592,7 @@ async function syncWithGitHub() {
   localStorage.setItem('hexo-todos', JSON.stringify(parsedTodos));
   renderTodos();
 }
+
 
 
 // ========== 修改后的添加任务函数 ==========
