@@ -46,7 +46,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://draumurvakna.github.io/images/fengmian/640.gif">
 <meta property="article:published_time" content="2025-03-20T20:07:24.550Z">
-<meta property="article:modified_time" content="2025-03-21T06:09:29.017Z">
+<meta property="article:modified_time" content="2025-03-21T06:19:29.147Z">
 <meta property="article:author" content="lxg">
 <meta property="article:tag" content="糕sama">
 <meta name="twitter:card" content="summary">
@@ -281,7 +281,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            5.4k words 
+            5.6k words 
           </div>
         </div>
         
@@ -290,8 +290,7 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <p>使用说明：通过右上角登陆后，任务可以实现多端同步；如果不登录，任务将会保存在本地浏览器，别人不会看到哦~</p>
-<style>
+          <style>
 /* 现代玻璃拟态风格 */
 .todo-container {
   max-width: 800px;
@@ -560,23 +559,39 @@ async function loginWithGitHub() {
   window.location = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=repo`;
 }
 
-
 // ========== 同步逻辑 ==========
 async function syncWithGitHub() {
-  // 获取GitHub数据
-  const remoteData = await fetch(
+  if (!ghToken) {
+    console.log("未登录 GitHub，无法同步");
+    return;
+  }
+
+  const response = await fetch(
     `https://api.github.com/repos/${GH_CONFIG.repoOwner}/${GH_CONFIG.repoName}/issues/${GH_CONFIG.issueNumber}/comments`,
     { headers: { Authorization: `token ${ghToken}` } }
   );
 
-  // 合并本地与远程数据
-  const localTodos = JSON.parse(localStorage.getItem('hexo-todos') || []);
-  const merged = [...new Map(
-    [...localTodos, ...await remoteData.json()].map(t => [t.id, t])
-  ).values()];
+  const comments = await response.json();
+  console.log("GitHub 获取的评论：", comments);
 
-  localStorage.setItem('hexo-todos', JSON.stringify(merged));
+  // **解析 JSON 格式的评论**
+  const parsedTodos = comments
+    .map(comment => {
+      try {
+        return JSON.parse(comment.body); // 解析 JSON
+      } catch (e) {
+        return null; // 解析失败，跳过
+      }
+    })
+    .filter(todo => todo !== null); // 过滤无效数据
+
+  console.log("解析后的待办事项：", parsedTodos);
+
+  // **保存到本地**
+  localStorage.setItem('hexo-todos', JSON.stringify(parsedTodos));
+  renderTodos();
 }
+
 
 // ========== 修改后的添加任务函数 ==========
 async function addTodo() {
