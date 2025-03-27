@@ -3024,3 +3024,96 @@ input[type="range"] {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+@media (prefers-color-scheme: dark) {
+  body,
+  #container {
+    color: #fff;
+    background: #181818;
+    --page-background: #181818;
+  }
+  a {
+    color: #4ea8ff;
+  }
+  ::selection {
+    background-color: #555;
+  }
+  .img-dim {
+    background: rgba(0,0,0,0.5);
+  }
+  #nav,
+  #sidebar-wrapper,
+  #footer-wrapper {
+    background: #202020;
+  }
+  :root {
+    --primary: #d0d3d4; /* 浅灰色 */
+    --secondary: #b0bec5; /* 次色变灰 */
+    --accent: linear-gradient(135deg, #37474f 0%, #455a64 100%); /* 深色调 */
+    --shadow: 0 10px 30px rgba(0,0,0,0.5); /* 深色模式阴影 */
+    --background-dark: #121212; /* 全局深色背景 */
+    --text-dark: #eaecee; /* 深色模式文本 */
+    --card-dark: #1e1e1e; /* 卡片背景 */
+  }
+  body {
+    background: var(--background-dark);
+    color: var(--text-dark);
+  }
+  .edu-card,
+  .exp-card,
+  .campus-card,
+  .activity-item {
+    background: var(--card-dark);
+    border: 1px solid rgba(255,255,255,0.15);
+    -webkit-box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    color: var(--text-dark);
+  }
+  .edu-card h3,
+  .edu-time,
+  .edu-card p:not(.edu-time),
+  .position-title,
+  .meta-info {
+    color: var(--text-dark);
+  }
+  .timeline-item::before {
+    background: #29b6f6; /* 亮蓝色 */
+    -webkit-box-shadow: 0 0 0 4px rgba(41,182,246,0.2);
+    box-shadow: 0 0 0 4px rgba(41,182,246,0.2);
+  }
+  .timeline-item::after {
+    background: #455a64;
+  }
+  .campus-grid::before {
+    background: -webkit-linear-gradient(transparent 10%, #37474f 50%, transparent 90%);
+    background: -moz-linear-gradient(transparent 10%, #37474f 50%, transparent 90%);
+    background: -ms-linear-gradient(transparent 10%, #37474f 50%, transparent 90%);
+    background: linear-gradient(transparent 10%, #37474f 50%, transparent 90%);
+  }
+  .award-tag {
+    background: -webkit-linear-gradient(315deg, #424242 0%, #616161 100%);
+    background: -moz-linear-gradient(315deg, #424242 0%, #616161 100%);
+    background: -ms-linear-gradient(315deg, #424242 0%, #616161 100%);
+    background: linear-gradient(135deg, #424242 0%, #616161 100%);
+    color: var(--text-dark);
+  }
+  ul.responsibilities li::before {
+    background: #b3e5fc;
+  }
+  ::selection {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  .typing-text {
+    color: var(--text-dark);
+    border-right: 2px solid #b3e5fc;
+  }
+  .edu-section .section-title {
+    color: var(--text-dark);
+  }
+  #main-grid #content-body .article-entry .company-header h3 {
+    color: var(--text-dark) !important;
+  }
+  #main-grid #content-body .article-entry .award-tag {
+    color: var(--text-dark) !important;
+  }
+}
