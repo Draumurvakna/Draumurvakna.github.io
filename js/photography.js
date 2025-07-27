@@ -8,6 +8,7 @@ class PhotographyGallery {
     this.photos = this.config.photos || [];
     this.categories = this.config.categories || [];
     this.currentFilter = 'all';
+    this.scrollPosition = 0;
     
     this.init();
   }
@@ -35,15 +36,6 @@ class PhotographyGallery {
           this.openViewer(photo);
         }
       }
-    });
-
-    // 查看器关闭
-    document.getElementById('viewerClose')?.addEventListener('click', () => {
-      this.closeViewer();
-    });
-
-    document.getElementById('viewerOverlay')?.addEventListener('click', () => {
-      this.closeViewer();
     });
 
     // 键盘事件
@@ -116,14 +108,28 @@ class PhotographyGallery {
   }
 
   openViewer(photo) {
-    const viewer = document.getElementById('photoViewer');
+    let viewer = document.getElementById('photoViewer');
+    
+    // 如果查看器不存在，创建一个新的
+    if (!viewer) {
+      viewer = this.createViewer();
+    }
+    
+    // 确保查看器直接添加到body下，脱离页面布局
+    if (viewer.parentNode !== document.body) {
+      document.body.appendChild(viewer);
+    }
+
     const image = document.getElementById('viewerImage');
     const title = document.getElementById('viewerTitle');
     const description = document.getElementById('viewerDescription');
     const date = document.getElementById('viewerDate');
     const location = document.getElementById('viewerLocation');
 
-    if (viewer && image) {
+    if (image) {
+      // 保存当前滚动位置
+      this.scrollPosition = window.pageYOffset;
+      
       image.src = photo.image;
       image.alt = photo.title;
       title.textContent = photo.title;
@@ -131,16 +137,78 @@ class PhotographyGallery {
       date.textContent = this.formatDate(photo.date);
       location.textContent = photo.location;
 
-      viewer.style.display = 'block';
+      // 使用CSS类显示查看器
+      viewer.classList.add('show');
+      
+      // 确保关闭按钮事件绑定成功（额外保障）
+      setTimeout(() => {
+        const closeBtn = document.getElementById('viewerClose');
+        if (closeBtn && !closeBtn.hasAttribute('data-event-bound')) {
+          closeBtn.addEventListener('click', () => {
+            this.closeViewer();
+          });
+          closeBtn.setAttribute('data-event-bound', 'true');
+        }
+      }, 0);
+      
       document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${this.scrollPosition}px`;
+      document.body.style.width = '100%';
     }
+  }
+
+  createViewer() {
+    const viewer = document.createElement('div');
+    viewer.id = 'photoViewer';
+    viewer.className = 'photo-viewer';
+    
+    viewer.innerHTML = `
+      <div class="viewer-overlay" id="viewerOverlay"></div>
+      <div class="viewer-content">
+        <button class="viewer-close" id="viewerClose">×</button>
+        <img id="viewerImage" src="" alt="">
+        <div class="viewer-info">
+          <h3 id="viewerTitle"></h3>
+          <p id="viewerDescription"></p>
+          <div class="viewer-meta">
+            <span id="viewerDate"></span>
+            <span id="viewerLocation"></span>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    // 添加事件监听器
+    const closeBtn = viewer.querySelector('#viewerClose');
+    closeBtn.addEventListener('click', () => {
+      this.closeViewer();
+    });
+    closeBtn.setAttribute('data-event-bound', 'true');
+    
+    viewer.querySelector('#viewerOverlay').addEventListener('click', () => {
+      this.closeViewer();
+    });
+    
+    return viewer;
   }
 
   closeViewer() {
     const viewer = document.getElementById('photoViewer');
     if (viewer) {
-      viewer.style.display = 'none';
-      document.body.style.overflow = 'auto';
+      // 使用CSS类隐藏查看器
+      viewer.classList.remove('show');
+      
+      // 恢复滚动样式和位置
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      
+      // 恢复之前的滚动位置
+      if (typeof this.scrollPosition === 'number') {
+        window.scrollTo(0, this.scrollPosition);
+      }
     }
   }
 

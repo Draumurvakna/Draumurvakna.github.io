@@ -213,12 +213,19 @@ body.photography-page {
 .photo-viewer {
   display: none;
   position: fixed;
+  z-index: 9999;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.9);
+}
+
+/* 当查看器显示时使用flex布局确保完美居中 */
+.photo-viewer.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .viewer-overlay {
@@ -230,12 +237,9 @@ body.photography-page {
 }
 
 .viewer-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 90%;
-  max-height: 90%;
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
   background: white;
   border-radius: 8px;
   overflow: hidden;
@@ -321,8 +325,9 @@ body.photography-page {
   }
   
   .viewer-content {
-    max-width: 95%;
-    max-height: 95%;
+    max-width: 95vw;
+    max-height: 95vh;
+    margin: 1rem;
   }
   
   .viewer-info {
@@ -332,7 +337,14 @@ body.photography-page {
   .viewer-info h3 {
     font-size: 1.5rem;
   }
+  
+  /* 确保在移动设备上完美居中 */
+  .photo-viewer.show {
+    padding: 1rem;
+  }
 }
+
+
 
 @media (max-width: 480px) {
   .photography-header {
