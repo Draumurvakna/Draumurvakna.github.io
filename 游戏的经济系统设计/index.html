@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+
+
+<html theme="light" showBanner="true" hasBanner="false" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+<!-- Gaug.es Analytics -->
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', 'true');
+    t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+    t.src = 'https://d36ee2fcip1434.cloudfront.net/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+<!-- End Gaug.es Analytics -->
+
+
+  
+  <title>游戏的经济系统设计 | Migao&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  
+
+  <meta name="description" content="游戏经济系统设计的原理与实践方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游戏的经济系统设计">
+<meta property="og:url" content="https://draumurvakna.github.io/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Migao&#39;s Blog">
+<meta property="og:description" content="游戏经济系统设计的原理与实践方法">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/HvDib8nnnoknTixCa4KcEFxqnxe.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/ONEAbOI7uom6yZxOPhscayMrnbg.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/Z74qbxAX8okrKRx1Se3coXxWnQc.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/XcYtbKYE0ozvQwxdx5ncCRtun5f.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/EXQPb2tUUo2qB3xLCk2cdhb6nQf.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/Kdnib2MPzoJXgQxRFqHc0qkBnsb.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/SX3ubzWWwowtooxJuvpccMSnnbf.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/IA4Cbn2uUo6Z3ExLlkhcOMyrn2f.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/WAkVbAUpbogmB7x90RFcfnGTnVg.png">
+<meta property="article:published_time" content="2024-02-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-09T17:52:31.522Z">
+<meta property="article:author" content="lxg">
+<meta property="article:tag" content="游戏">
+<meta property="article:tag" content="设计">
+<meta property="article:tag" content="经济系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://draumurvakna.github.io/images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/HvDib8nnnoknTixCa4KcEFxqnxe.png">
+  
+  
+    <link rel="icon" href="/icecream.icon.ico" type="image/x-icon">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Migao's Blog </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/photography">Photography</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/photography">Photography</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/images/avatar.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">林雪糕 </div>
+      <div class="dot"></div>
+      <div class="subtitle">法律人也要写博客！ </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk0MTEyODUyMA==&action=getalbum&album_id=2537255885711048705&subscene=126&scenenote=https%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMzk0MTEyODUyMA%3D%3D%26mid%3D2247486101%26idx%3D1%26sn%3D6a43e57a3abd6382261e8cd5156ca7b6%26chksm%3Dc3098ac24893f702dabbbdb992a3f96a3277eed8b2375f67d067df0fd67662bbd3f82ed0f973%26scene%3D126%26sessionid%3D1730190028%26subscene%3D227%26clicktime%3D1730190033%26enterid%3D1730190033%26key%3Ddaf9bdc5abc4e8d07f0422f6e7f96cdcd6f23cb2968f228deaa4f763f6aca3ef9649f0553f639257a958c897689ae42b1d90846f53fb61d9fc55bef072cb5d19900662828c0df74f06dcead039fa5fa68ae7cf8be1915bd37e4497cdd6b212a065e2b4261f8a96dfcb5dcd52a4b327a6f8f61b41dc2d102497860435a01b7b6f%26ascene%3D0%26uin%3DMTg1MTEyNzY3NA%253D%253D%26devicetype%3DWindows%2B11%2Bx64%26version%3D63090c11%26lang%3Dzh_CN%26countrycode%3DCN%26exportkey%3Dn_ChQIAhIQCk93BtxjuaL6c%252BGspMb0sRLmAQIE97dBBAEAAAAAAJwmGFMQgGsAAAAOpnltbLcz9gKNyK89dVj0mOz8JelrRBwzgBHHK5uKvbZNISqkP2q6LXB%252BS9Ku49h0QJOJnSUw1SpLqgac5ohL9Slq8YvUcuHqY5aGjzgqIhO4aAcTkS%252BlN39KA%252B5CjDEHaPhGLB8Ez8trXzMYqgyEn5oYgm54k%252FsdLtVthoNDcI0U83ORs1yJORk2sTgJCD%252BuLGh1Uf91VUs%252FxfADbz0CCysSqj8bpCnODMee9LP6fY0Bx2vt%252FTd2hbj1hHRxXRv75C2iV8Ff8jRPDU9VMC%252FZ%26acctmode%3D0%26pass_ticket%3DE2oQMSCabSWCZrwrdEdTnZciclf2aRNoFU06jS%252B8jYm2l%252B29AoN5kUGKAvL5SJ4w%26wx_header%3D1%26fasttmpl_type%3D0%26fasttmpl_fullversion%3D7446448-zh_CN-zip%26fasttmpl_flag%3D1&nolastread=1#wechat_redirect" title="公众号"><i class="fa-solid fa-file"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://www.instagram.com/migaosama0211/" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://weibo.com/u/6409598688" title="Weibo"><i class="fa-brands fa-weibo"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <a class="recent-link" href="/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/" title="大模型通识" >
+            <div class="recent-link-text">
+              大模型通识
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/%E7%BD%91%E9%A1%B5%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%95/" title="网页读书记录" >
+            <div class="recent-link-text">
+              网页读书记录
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/40-%E6%AC%A7%E7%9B%9F%E6%B3%95%E5%AD%A6%E4%B9%A0%E9%9A%8F%E8%AE%B0/" title="欧盟法学习随记" >
+            <div class="recent-link-text">
+              欧盟法学习随记
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/39-%E5%85%AC%E5%8F%B8%E5%9E%AB%E4%BB%98%E8%82%A1%E6%9D%83%E8%BD%AC%E8%AE%A9%E6%AC%BE/" title="公司垫付股权转让款后，股东欠付且股权被冻结，怎么办？" >
+            <div class="recent-link-text">
+              公司垫付股权转让款后，股东欠付且股权被冻结，怎么办？
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/38-%E9%A6%99%E6%B8%AF%E5%AF%B9%E5%81%B7%E6%8B%8D%E9%97%AE%E9%A2%98%E6%98%AF%E5%A6%82%E4%BD%95%E8%A7%84%E5%88%B6%E7%9A%84/" title="香港对偷拍行为是如何规制的？" >
+            <div class="recent-link-text">
+              香港对偷拍行为是如何规制的？
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Categories</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/LAW/">
+                LAW
+                <div class="category-count">71</div>
+            </a>
+        
+            <a class="category-link" href="/categories/ESSAY/">
+                ESSAY
+                <div class="category-count">7</div>
+            </a>
+        
+            <a class="category-link" href="/categories/NOTES/">
+                NOTES
+                <div class="category-count">6</div>
+            </a>
+        
+            <a class="category-link" href="/categories/BUSINESS/">
+                BUSINESS
+                <div class="category-count">8</div>
+            </a>
+        
+            <a class="category-link" href="/categories/READING/">
+                READING
+                <div class="category-count">14</div>
+            </a>
+        
+            <a class="category-link" href="/categories/GAME/">
+                GAME
+                <div class="category-count">4</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/DATA/" rel="tag">DATA</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/GDPR/" rel="tag">GDPR</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/IP/" rel="tag">IP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/LITERATURE/" rel="tag">LITERATURE</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Self-Help/" rel="tag">Self-Help</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/UA/" rel="tag">UA</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E4%B9%B0%E9%87%8F/" rel="tag">买量</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E4%BA%BA%E6%9D%83/" rel="tag">人权</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E4%BB%A5%E8%89%B2%E5%88%97/" rel="tag">以色列</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E4%BB%B2%E8%A3%81/" rel="tag">仲裁</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E4%BC%A0%E8%AE%B0/" rel="tag">传记</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%81%A5%E5%BA%B7/" rel="tag">健康</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%85%AC%E5%8F%B8%E6%B3%95/" rel="tag">公司法</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%85%BB%E7%94%9F/" rel="tag">养生</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%86%85%E5%AE%B9%E8%BF%90%E8%90%A5/" rel="tag">内容运营</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%88%86%E9%94%80/" rel="tag">分销</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%88%91%E4%BA%8B/" rel="tag">刑事</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%88%91%E6%B3%95/" rel="tag">刑法</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8A%A0%E5%AF%86/" rel="tag">加密</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8A%B3%E5%8A%A8%E6%B3%95/" rel="tag">劳动法</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8F%8D%E4%B8%8D%E6%AD%A3%E5%BD%93%E7%AB%9E%E4%BA%89/" rel="tag">反不正当竞争</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8F%8D%E5%9E%84%E6%96%AD/" rel="tag">反垄断</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8F%91%E8%A1%8C/" rel="tag">发行</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%90%88%E5%90%8C%E6%B3%95/" rel="tag">合同法</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%90%88%E8%A7%84/" rel="tag">合规</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%93%B2%E5%AD%A6/" rel="tag">哲学</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%9B%BD%E9%99%85%E5%85%B3%E7%B3%BB/" rel="tag">国际关系</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag">大模型</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%A4%A7%E9%99%86/" rel="tag">大陆</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%A5%B3%E6%80%A7%E4%B8%BB%E4%B9%89/" rel="tag">女性主义</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%A9%9A%E5%A7%BB/" rel="tag">婚姻</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%AE%89%E5%85%A8/" rel="tag">安全</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B7%B4%E8%A5%BF/" rel="tag">巴西</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B9%BF%E5%91%8A/" rel="tag">广告</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%84%8F%E5%A4%A7%E5%88%A9/" rel="tag">意大利</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%89%8B%E6%9C%BA/" rel="tag">手机</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%89%A7%E8%A1%8C/" rel="tag">执行</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%8A%96%E9%9F%B3/" rel="tag">抖音</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%95%99%E8%82%B2%E5%AD%A6/" rel="tag">教育学</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%96%87%E5%8C%96/" rel="tag">文化</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%96%87%E5%A8%B1/" rel="tag">文娱</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%97%A5%E6%9C%AC/" rel="tag">日本</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%97%B6%E5%B0%9A/" rel="tag">时尚</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9C%AA%E6%88%90%E5%B9%B4%E4%BF%9D%E6%8A%A4/" rel="tag">未成年保护</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%AC%A7%E7%9B%9F/" rel="tag">欧盟</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84/" rel="tag">法律法规</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%B3%95%E5%BE%8B%E9%A3%8E%E9%99%A9/" rel="tag">法律风险</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%B6%89%E5%A4%96/" rel="tag">涉外</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%B8%A0%E9%81%93/" rel="tag">渠道</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%89%88%E6%9D%83/" rel="tag">版权</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/" rel="tag">生活感悟</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E5%8D%8F%E8%AE%AE/" rel="tag">用户协议</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%94%B5%E5%95%86/" rel="tag">电商</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%94%B5%E5%BD%B1/" rel="tag">电影</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%9B%91%E7%AE%A1/" rel="tag">监管</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83/" rel="tag">知识产权</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A/" rel="tag">社会</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A%E5%AD%A6/" rel="tag">社会学</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E6%B3%95/" rel="tag">程序法</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%A8%8E%E6%B3%95/" rel="tag">税法</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%B3%95sama/" rel="tag">糕sama</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E5%8F%B2/" rel="tag">经济史</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6/" rel="tag">经济学</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F/" rel="tag">经济系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%BE%8E%E5%9B%BD/" rel="tag">美国</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%81%8C%E5%9C%BA/" rel="tag">职场</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%90%A5%E5%85%BB%E5%AD%A6/" rel="tag">营养学</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%90%A5%E9%94%80/" rel="tag">营销</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E9%81%93%E5%85%B7%E3%80%81%E8%99%9A%E6%8B%9F%E5%B8%81%E4%BB%A5%E5%8F%8A%E6%B3%95%E5%AE%9A%E8%B4%A7%E5%B8%81%E9%97%AE%E9%A2%98/" rel="tag">虚拟道具、虚拟币以及法定货币问题</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%A1%8C%E6%94%BF%E4%BA%8B%E5%8A%A1/" rel="tag">行政事务</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/" rel="tag">讲座笔记</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1/" rel="tag">设计</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AF%89%E8%AE%BC/" rel="tag">诉讼</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6/" rel="tag">读书</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E4%BC%9A/" rel="tag">读书会</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%B0%83%E6%9F%A5%E6%8A%A5%E5%91%8A/" rel="tag">调查报告</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%B0%83%E8%A7%A3/" rel="tag">调解</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%94%80%E5%94%AE/" rel="tag">销售</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%9D%9E%E8%99%9A%E6%9E%84/" rel="tag">非虚构</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%9F%A9%E5%9B%BD/" rel="tag">韩国</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%9F%B3%E4%B9%90/" rel="tag">音乐</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%A6%99%E6%B8%AF/" rel="tag">香港</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-游戏的经济系统设计" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        游戏的经济系统设计
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-02-04T16:00:00.000Z" itemprop="datePublished">2024-02-05</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/GAME/">GAME</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            9k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F/" rel="tag">经济系统</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1/" rel="tag">设计</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h2><span id="一-经济系统设计总述">一、经济系统设计总述</span></h2><h3><span id="一经济系统和经济循环">（一）经济系统和经济循环</span></h3><p><img src="../images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/HvDib8nnnoknTixCa4KcEFxqnxe.png"></p>
+<p>经济系统的广义定义：由相互联系和相互作用的若干经济元素结合成的，具有特定功能的有机整体。</p>
+<p>与现实世界相比，游戏中的经济系统更为简化（无储蓄、借贷、信用扩张等现实经济因素），从产出开始，经积累阶段，最后到消耗，有的游戏也会包含流通环节，用于资源的再分配。</p>
+<ul>
+<li>产出：用户在游戏中生成任何可消耗且有价值的道具或物品的阶段</li>
+<li>积累（＊非必需）：资源产出后，还未转化为消耗时的存量增长过程。这一阶段资源存量不断增长，但不会特别复杂。有些游戏例如《万国觉醒》和《部落冲突》会有资源被掠夺的元素，创造独特的体验。</li>
+<li>消耗：资产的消耗或折旧，转化为游戏体验提升的过程。消耗意味着资源数量减少，而折旧是资源在使用过程中的磨损，最终导致消耗。</li>
+<li>流通（＊非必需）：游戏中货币和商品发生交换的过程。<ul>
+<li>可以根据流通环节的差异将经济系统分类</li>
+</ul>
+</li>
+</ul>
+<p>积累和流通是灰色环节，意味着在某些游戏中可能不存在。简单的游戏可能直接从产出到消耗，没有积累过程，很多免费游戏也没有交易系统，因此也就没有流通。</p>
+<h3><span id="二经济系统的分类">（二）经济系统的分类</span></h3><h4><span id="自由交易型开放式经济"><strong>自由交易型（开放式经济）</strong></span></h4><ul>
+<li><strong>定义</strong>：允许在游戏中自由交易游戏资源，无限制或仅对特定情况有限制。</li>
+<li><strong>例子</strong>：梦幻西游电脑版、星战前夜、逆水寒</li>
+<li><strong>特点</strong>：<ul>
+<li>游戏体验不完全免费。</li>
+<li>通常采用点卡、月卡或其他付费方式</li>
+<li>部分游戏中，任何产出都有强制付费成本。</li>
+</ul>
+</li>
+</ul>
+<h4><span id="有限制的交易准开放式经济"><strong>有限制的交易（准开放式经济）</strong></span></h4><ul>
+<li><strong>定义</strong>：游戏中允许交易但有各种限制。</li>
+<li><strong>例子</strong>：梦幻西游手游、天涯明月刀、天谕、剑侠情缘手游等。</li>
+<li><strong>特点</strong>：<ul>
+<li>主要是MMORPG类型的游戏，强调社交和交易。</li>
+<li>通常免费提供基本游戏体验，道具收费。</li>
+<li>一些游戏产出没有强制付费成本。</li>
+</ul>
+</li>
+</ul>
+<h4><span id="无交易封闭式经济">无交易：封闭式经济</span></h4><ul>
+<li><strong>定义</strong>：完全没有交易。</li>
+<li><strong>例子</strong>：很多单机游戏，特别是是那些不包括玩家间交易系统的游戏</li>
+<li><strong>特点</strong>：这类游戏的经济系统都相对简单。</li>
+</ul>
+<h2><span id="二-游戏资源的产出">二、游戏资源的产出</span></h2><h3><span id="一资源产出的本质与设计原则">（一）资源产出的本质与设计原则</span></h3><ul>
+<li><p>产出的本质：</p>
+<ul>
+<li>游戏中的产出是指所有可消耗且有价值的东西的投放。</li>
+<li>产出必须满足两个条件：可消耗性和价值性。<ul>
+<li>可消耗性指的是玩家获得后可以通过游戏机制使用掉的道具。</li>
+<li>价值性指的是道具对玩家有用，如果没有价值，则视为没有意义的投放。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>产出类型：</p>
+<ul>
+<li>分为免费产出和付费产出。<ul>
+<li>免费产出是玩家通过劳动（游戏玩法的参与）和资产（游戏内的能力或资源）的结合进行的转化。</li>
+<li>付费产出是玩家使用现金直接转化为游戏中的资源。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3><span id="二设计资源产出的准则">（二）设计资源产出的准则</span></h3><p>核心准则是”以核心为主，以设计期望为辅”，即设计时要考虑游戏的核心玩法和设计者的初衷。</p>
+<ul>
+<li>首先规划有什么玩法和有什么资源</li>
+<li>活动／玩法／付费，产出什么资源</li>
+</ul>
+<blockquote>
+<p>例如：日常任务、悬赏令、巅峰晋级这三个活动，每个活动都有对应的特定资源：</p>
+<ul>
+<li>日常任务：产出经验值，类似于玩家的历练过程。</li>
+<li>悬赏令：产出金币，名字本身也听起来像是与金钱有关的活动。</li>
+<li>巅峰晋级：产出特殊的坐骑，可以作为荣誉象征，因为只有顶尖的玩家才能获得。</li>
+</ul>
+</blockquote>
+<p>设计经济系统时，资源的产出机制应该与游戏玩法紧密相关，且要充分考虑玩家的游戏体验。将具体的活动和资源联系起来，才能确保游戏经济系统的合理性和玩家的参与动力。</p>
+<h3><span id="三产出的多少">（三）产出的多少</span></h3><h4><span id="资源产出量的设计问题">资源产出量的设计问题</span></h4><ul>
+<li><strong>一个周期内产出的总和是多少</strong>：这个问题关注于在一个给定的时间周期内（比如，每天、每周或每月），游戏总共应该向玩家投放多少资源。</li>
+<li><strong>某个资源一个周期内产出的总量</strong>：特指在同一周期内，单一资源（如金币、经验值）的产出量。</li>
+<li><strong>某个资源一个周期内在各个玩法活动中分别产出多少</strong>：这个问题更加细化，涉及在各种游戏活动中同一资源的产出量如何分配。</li>
+<li><strong>资源产出效率的变化</strong>：讨论某种资源随时间或条件改变的产出效率。</li>
+</ul>
+<h4><span id="设计资源产出量的方法和技巧">设计资源产出量的方法和技巧</span></h4><ul>
+<li><strong>与消耗结合考虑</strong>：资源产出量的设计不应脱离消耗量的考量。两者需要结合起来，确保游戏经济的平衡。</li>
+<li><strong>设置标杆</strong>：设计者可以参考其他成功的在线游戏，了解它们的资源产出总和等价于多少现金价值，从而设置一个产出的标杆或基准。</li>
+<li><strong>玩家经验参考</strong>：玩家通常对于自己在游戏中所能够获得资源的价值有一个直观感觉。比如，玩家知道他们每天能节省多少现金价值的资源，如果不玩游戏，又需要花费多少来补上。</li>
+<li><strong>制定数据模型</strong>：建议在早期阶段就为每一个重要的资源制定出一个数据模型，可以用表格形式来规划和预设以经验值的产出为例，可以以天为周期，创建一个表格，记录玩家通过不同途径获得经验的量。</li>
+</ul>
+<p><img src="../images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/ONEAbOI7uom6yZxOPhscayMrnbg.png"></p>
+<h3><span id="四产出的体验">（四）产出的体验</span></h3><p>资源产出不仅仅是简单的数值游戏，而是有深度、能带来情感体验的。通过合理设计产出的内容、频率以及量的分布，可以显著提升玩家对游戏的兴趣和长期参与度。</p>
+<h4><span id="产出内容的多样性求异心理"><strong>产出内容的多样性（求异心理）</strong></span></h4><ul>
+<li>体验的多样性是关键，遵循人类的求异心理。</li>
+<li>如果游戏的产出始终是同一种类型（e.g. 始终是金币），玩家会觉得单调乏味。</li>
+<li>游戏的资源和奖励应该多样化，但也要合理控制种类以避免过度复杂。</li>
+</ul>
+<h4><span id="产出频率的梯度设计"><strong>产出频率的梯度设计</strong></span></h4><ul>
+<li>奖励发放的频率应有不同的梯度，可以是实时反馈，也可以是积累一段时间后的一次性大奖。</li>
+<li>梯度设计增加了玩家情感上的波动，提升了产出对于玩家的吸引力。</li>
+</ul>
+<h4><span id="产出量的分布"><strong>产出量的分布</strong></span></h4><ul>
+<li>产出量应在一定的随机范围内变动，给玩家意外的喜悦和随机性的乐趣，而不是固定的、绝对的数值。</li>
+<li>使用随机分布，如均匀分布或正态分布，来设计这种随机变化。<ul>
+<li>游戏中常使用均匀分布，即所有可能结果的概率相同。</li>
+<li>正态分布可以将结果集中在平均值附近，减少玩家连续获得较低值的概率，避免不良体验。</li>
+<li>通过多次运用均匀分布并取平均可以制造类似正态分布的效果，是一种简化处理随机性的方法。</li>
+</ul>
+</li>
+</ul>
+<h2><span id="三-游戏资源的消耗">三、游戏资源的消耗</span></h2><h3><span id="一-消耗的本质">（一） <strong>消耗的本质</strong></span></h3><ul>
+<li>用户体验提升：消耗的本质是将已有资源转化为提升用户游戏体验的过程。如果消耗不能提升玩家体验，它就失去了意义。</li>
+<li>消耗必须有目的性，即使是简单的道具摧毁动作，也要让玩家感到一定程度的满足或是释放包裹空间的必要。</li>
+</ul>
+<h3><span id="二-消耗的对象">（二） <strong>消耗的对象</strong></span></h3><ul>
+<li>知道游戏中有哪些资源后，可以根据游戏系统和养成设定来决定应该在哪里消耗什么资源。适当的消耗可以促进玩家持续投入，而过度或缺乏计划的消耗可能会导致玩家流失。</li>
+<li>设计者可以有不同的方式来构建消耗逻辑，但是玩家的体验和感知在这里是决定性的（有效的消耗设计应该结合玩家行为、游戏进度和玩家心理预期进行）。</li>
+</ul>
+<h3><span id="三-消耗的分类">（三） <strong>消耗的分类</strong></span></h3><p>在讨论具体消耗多少之前，建议先对消耗进行分类。具体可以分为三大类：日常消耗、养成消耗、额外消耗。设计者在考虑消耗策略时，应该充分考虑到消耗对玩家体验的影响。通过合理安排日常消耗、养成消耗和额外消耗，既可以保证游戏经济环境的活跃，也可以满足不同类型玩家的需求。</p>
+<h4><span id="日常消耗">日常消耗</span></h4><p>定义：玩家在产出的过程中造成的消耗，例如药品、装备耐久、门票、日常任务道具等。</p>
+<p>特点：消耗占比低，发生频率高，单次消耗低，消耗需求平稳且与产出量正相关（通常随着玩家的游戏进度逐渐增加），但不影响游戏体验。</p>
+<h4><span id="养成消耗">养成消耗</span></h4><p>定义：玩家用于提升战力的消耗，例如装备强化、技能升级、同伴养成等。</p>
+<p>特点：游戏中的主要消耗，初始发生频率高然后衰减，初始单次消耗低然后递增；初始消耗需求小于等于产出量然后增加至远大于产出量，且可趋于正无穷</p>
+<h4><span id="额外消耗">额外消耗</span></h4><p>定义：不关联战力，仅提升游戏体验的消耗。如跳过等待时间、时装、成就等。</p>
+<p>特点：消耗与付费相关联，非必要，消耗需求无需关联产出量。</p>
+<h2><span id="四-平衡产消对接养成">四、平衡产消对接养成</span></h2><p>平衡产出和消耗的数值关系，最终映射到养成线上。</p>
+<h3><span id="一体验预期模型">（一）体验预期模型</span></h3><h4><span id="思路">思路</span></h4><p>消耗多少资源能够对应多少体验提升？</p>
+<p>依据设计目的与预期感受为参考，可以使得这个问题变得更具体。</p>
+<ul>
+<li>对n种基于肝度与付费区分的不同类型的玩家描绘出其在某几个阶段的养成情况。</li>
+<li>有了方向后，需要将方向的描述进行量化，即玩家玩了多久，产出了多少东西，消耗了多少东西，达到什么程度的养成，拥有了多少能力属性。</li>
+</ul>
+<p>根据玩家的游戏时间和付费金额，预期他们的游戏体验和进展。</p>
+<p>通过创造不同的玩家角色模型，可以帮助游戏设计者更好地理解和规划玩家的养成路径。</p>
+<h4><span id="定性坐标系">定性坐标系</span></h4><p>一个用于分析和预测玩家体验的模型：</p>
+<ul>
+<li><strong>横坐标（肝度）</strong>：表示玩家每天投入游戏的时间。</li>
+<li><strong>纵坐标（氪度）</strong>：表示玩家每个月在游戏中消费的金额。</li>
+</ul>
+<p>通过这样的坐标系，设计者可以将玩家划分为不同区域，每个区域代表着一类玩家与其对应的养成状态和体验预期。然后，可以用简单的文字描述来描绘不同类型玩家的状态，例如：</p>
+<ul>
+<li><strong>高氪度玩家</strong>（如每月消费10万）：可以迅速获得游戏中的高级资源与装备，进展非常快，通常会拥有比其他玩家更强大的角色和能力。</li>
+<li><strong>中等氪度玩家</strong>（如每月消费1万）：养成状态不如高氪度玩家，进展较慢，但仍然可以通过持续的游戏体验和中等消费得到满足。</li>
+</ul>
+<p>这样一来，可以对玩家的不同养成路径有一个直观的认识，有助于规划产出与消耗策略，以满足不同玩家的需求和期望。</p>
+<p>体验预期模型的目的是为了创建一种平衡，让游戏对不同类型的玩家都有吸引力——无论他们是愿意花费时间、金钱，还是二者都愿意投入。</p>
+<h4><span id="从定性到定量">从定性到定量</span></h4><ul>
+<li>玩家类型和养成阶段划分：基于玩家的游戏时间（肝度）和付费金额（氪度），描述出不同类型玩家在游戏不同阶段（如第1天、第3天、第7天、第14天、第30天）的养成状态。</li>
+<li>体验预期方向：把握玩家在游戏中的成长预期和满意度。</li>
+<li>从描述到量化：将先前的体验描述转化为可量化的数值，量化玩家在游戏中的时间投入与产出、资源消耗，以及最终的角色养成进度和战力。</li>
+<li>数据表：量化完成后，通过数据表格将这些数值化的体验指标固定，以便确切地反映玩家在游戏过程中的进展与资源流动。</li>
+</ul>
+<p>类似于设F（t）为养成情况，t为节点。已知F（t1）&#x3D;F1、 F（t2）&#x3D;F2、F（t3）&#x3D;F3 求出F（t），t可为任意值，这里以天为节点周期举例：</p>
+<table header_row="1">
+<colgroup>
+<col width="100">
+<col width="100">
+<col width="100">
+<col width="100">
+<col width="100">
+<col width="100">
+<col width="100">
+<col width="100">
+<col width="100">
+</colgroup>
+<thead>
+<tr><th colspan="2"><p>节点</p></th><th colspan="4"><p>养成进度</p></th><th colspan="3"><p>战力预估</p></th></tr>
+</thead>
+<tbody>
+<tr><td><p>天数</p></td><td><p>等级</p></td><td><p>养成线1</p></td><td><p>养成线2</p></td><td><p>养成线3</p></td><td><p>养成线4</p></td><td><p>属性1</p></td><td><p>属性2</p></td><td><p>属性3</p></td></tr>
+<tr><td><p>4</p></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td></tr>
+<tr><td><p>5</p></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td></tr>
+<tr><td><p>6</p></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td></tr>
+<tr><td><p>7</p></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td></tr>
+<tr><td><p>……</p></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td><td><h2><span id></span></h2></td></tr>
+</tbody>
+</table>
+
+<h3><span id="二消耗对接养成">（二）消耗对接养成</span></h3><p>建立每个养成线的消耗数据模型</p>
+<p>包含了游戏中各个养成阶段所需要消耗的资源数值，如金币、经验值、材料及时间等。具体的数据可以来自经验预设，但最终的可行性需要对接产出和养成体验。</p>
+<div class="flex gap-3 columns-2" column-size="2">
+<div class="w-[58%]" width-ratio="58">
+<table>
+<thead>
+<tr>
+<th>养成进度</th>
+<th>金币</th>
+<th>资源A</th>
+<th>资源B</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>##</td>
+<td>##</td>
+<td>##</td>
+</tr>
+<tr>
+<td>2</td>
+<td>##</td>
+<td>##</td>
+<td>##</td>
+</tr>
+</tbody></table>
+</div>
+<div class="w-[41%]" width-ratio="41">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>金币累计</td>
+<td>资源A累计</td>
+<td>资源B累计</td>
+</tr>
+<tr>
+<td>##</td>
+<td>##</td>
+<td>##</td>
+</tr>
+<tr>
+<td>##</td>
+<td>##</td>
+<td>##</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p>玩家社区经常自发地创造这类数据表，帮助其他玩家更高效地规划和管理自己的养成策略。</p>
+<h3><span id="三产出消耗养成">（三）产出消耗养成</span></h3><p>根据玩家的养成预期，演算出产出的具体量和消耗的具体量。</p>
+<p><img src="../images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/Z74qbxAX8okrKRx1Se3coXxWnQc.png"></p>
+<p>上面是一个简单的例子，实际的项目中用到的表格更复杂，可能会包括几百列信息，还会下分很多个子表格。</p>
+<ol>
+<li><strong>节点周期</strong>：时间节点，如第一天、第五天等，有助于追踪玩家的具体养成阶段和进度。</li>
+<li><strong>养成进度的标杆值</strong>：表中会包含玩家养成进度的关键数据，如等级、繁荣度等，用作衡量玩家进度的标准。</li>
+<li><strong>资源产出和消耗</strong>：详细列出玩家在每个节点上的资源产出和消耗汇总，以及每日的日常消耗情况。</li>
+<li><strong>资源存量统计</strong>：追踪玩家在各个时间点的资源存量，包括期初和期末资源状况。</li>
+<li><strong>付费产出的规划</strong>：为了更有效地设计付费方案，会考虑付费产出的量级，引导玩家进行高性价比的购买。</li>
+<li><strong>养成情况的综合描述</strong>：最终的目标是将所有的数据结合起来，匹配玩家的实际养成情况与设计者预设的养成预期模型，以确保玩家能够达到期望的体验。</li>
+<li><strong>战斗力</strong>：通过这张数据表，可以计算玩家的战力，并据此设定游戏 PVE 内容的难度，以确保玩家体验的连贯性和挑战性。非付费高活跃度玩家（屌丝玩家）的进展常作为PVE内容难度设计的一个重要参照点，因为这代表了非付费玩家能够通过努力达到的战力水平。</li>
+</ol>
+<p>详尽的数据管理和分析是确保游戏平衡与玩家满意度的关键步骤——特别是对于拥有复杂养成系统和经济模型的游戏而言。</p>
+<h3><span id="四消耗量最优解">（四）消耗量最优解</span></h3><p>即体验提升的定价。</p>
+<p>在游戏设计中，定价策略对于玩家决策和游戏收益至关重要。游戏内部每个养成线的消耗量、商城项目以及直接向玩家推送的各种礼包，都应当基于提升游戏体验来设定价格。</p>
+<p>需要解决的问题：</p>
+<ol>
+<li>每一单位的体验提升需要消耗多少资源。</li>
+<li>如何通过定价来最大化游戏产品的收益。</li>
+</ol>
+<p>求每一单位的体验提升需要消耗多少系统产出（玩法所得）或者付费产出（充值购买）。为了让产品的收益最大化，对此常用的方法是消耗的边际效用递减和价格歧视。</p>
+<h4><span id="边际效用递减"><strong>边际效用递减</strong></span></h4><p>随着消耗资源的增加，每增加一单位资源带来的体验提升逐渐减少。这是游戏中常见的现象，随着玩家的游戏进程，他们为了相同的体验提升需要付出越来越多。</p>
+<p>边际效用递减：随着玩家在游戏中的投入不断增加，他们获得的满足感和体验提升的程度将逐渐减小。这表明玩家在初期可能花费较少就能获得显著的体验提升，而随着游戏的深入，相同的体验提升则需要更大的资源消耗。</p>
+<h4><span id="价格歧视">价格歧视</span></h4><h2><span id="五-游戏资源的流通">五、游戏资源的流通</span></h2><h3><span id="一要不要流通">（一）要不要流通</span></h3><p>依据游戏的核心游戏体验去判断需不需要流通环节。游戏体验侧重社交且玩家在游戏中有足够的精力去投入在交易玩法中，那么这个游戏就应该有交易玩法。</p>
+<ul>
+<li><strong>射击游戏</strong>：如果核心体验是射击，可能不需要复杂的交易系统。</li>
+<li><strong>动作RPG</strong>：由于动作RPG游戏中玩家需投入更多精力在游戏操作上，需考虑是否增加交易系统可能会分散玩家的注意力。</li>
+<li><strong>社交重游戏</strong>：如果游戏体验侧重于社交且玩家有足够精力投入交易玩法，那么设立一个交易系统可能会有益。</li>
+<li><strong>MMORPG</strong>：MMORPG有宽广的社交和经济系统，交易是这些游戏不可或缺的一部分。</li>
+</ul>
+<h3><span id="二流通的意义">（二）流通的意义</span></h3><ul>
+<li><p>拓展自由度，更广阔的玩家生存空间，满足更多玩家的需求。</p>
+</li>
+<li><p>资源分配：交易系统可以促使游戏资源得到合理分配，实现公平和高效。</p>
+<ul>
+<li>例如：张三和李四创造了一个游戏但是缺乏资金，而王五有充足的资金并愿意投资。通过交易，资金从王五流向张三和李四，游戏得以发布，三人均获得满意的结果。这样的交易提高了资源分配的效率和整体社会福利。</li>
+</ul>
+</li>
+<li><p>效用效应：不同的玩家对相同资源的价值判断不同。通过交易，玩家可以根据自己对资源的价值判断进行买卖，从而提高整体的效用效应。</p>
+<ul>
+<li>人们对相同数量的钱财或其他商品的价值感知是主观的，且因个人而异。例如，对一个普通人来说，2万元可能是一笔相对重要的资金，而对于一个富翁来说，可能是微不足道的小额。另外，如果一个人愿意花6,000元购买iPhone，这代表他们认为iPhone的价值超过其价格，因此买下它会增加他们的效用。</li>
+</ul>
+</li>
+<li><p>确立更加贴近实际价值的虚拟价值体系，让玩家的资产更值钱。</p>
+</li>
+<li><p>促进玩家交互，交易本身就是一种社交。</p>
+</li>
+</ul>
+<p><img src="../images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/XcYtbKYE0ozvQwxdx5ncCRtun5f.png"></p>
+<h3><span id="三交易形式的分类">（三）交易形式的分类</span></h3><table header_column="1" header_row="1">
+<colgroup>
+<col width="100">
+<col width="180">
+<col width="180">
+<col width="100">
+</colgroup>
+<thead>
+<tr><th><p>交易类型</p></th><th><p>简介</p></th><th><p>特点</p></th><th><p>参考案例</p></th></tr>
+</thead>
+<tbody>
+<tr><td><p>面对面交易</p></td><td><p>交易双方按照事先的约定,面对面进行资源的交换。</p></td><td><p>易理解,交易流程繁琐,强化社交,无法   规避定向流通,市场有效性差。</p></td><td><p>热血传奇</p></td></tr>
+<tr><td><p>摆摊</p></td><td><p>玩家在游戏中摆摊,在摊位中上架商品,供光顾摊位的玩家购买。</p></td><td><p>易理解,占用玩家游戏时间,无法规避定向流通,市场有效性一般。</p></td><td><p>梦幻西游电脑版</p></td></tr>
+<tr><td><p>寄售</p></td><td><p>玩家将商品放入寄售系统,由系统代理销售。</p></td><td><p>通用性强,可以规避定向流通,市场有效性好。</p></td><td><p>梦幻西游手游</p></td></tr>
+<tr><td><p>委托交易</p></td><td><p>玩家向系统发布委托指示,即买入或卖出订单</p></td><td><p>不易理解,适用于量级较大的资源流通，无法规避定向流通，市场有效性极好。</p></td><td><p>星战前夜</p></td></tr>
+</tbody>
+</table>
+
+<p>在游戏里，交易系统是关键的社交和经济活动，不同类型的交易方式适用于不同的游戏环境和玩家需求。以下是对你描述的交易形式的整理和解释：</p>
+<ol>
+<li><p><strong>面对面交易</strong></p>
+<ul>
+<li>直接的交易方式，玩家之间直接交换物品。</li>
+<li>优点：增强社交互动。</li>
+<li>缺点：流程繁琐，易受诈骗影响，对市场价格掌握不准确。</li>
+</ul>
+</li>
+<li><p><strong>摆摊交易&#x2F;禁售</strong></p>
+<ul>
+<li>玩家在游戏中设置摊位，展示物品供他人购买。</li>
+<li>优点：玩家对卖什么、卖多少有完全控制。</li>
+<li>缺点：占用玩家时间，可能导致玩家待机，有效性一般。</li>
+</ul>
+</li>
+<li><p><strong>委托交易</strong></p>
+<ul>
+<li>类似股票市场，玩家向系统发送买卖指令，系统匹配订单。</li>
+<li>优点：自动化，无需玩家在线等待，市场有效性较好。</li>
+<li>缺点：可能需要一定时间玩家才能理解其运作方式。<br><img src="../images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/EXQPb2tUUo2qB3xLCk2cdhb6nQf.png"></li>
+</ul>
+</li>
+<li><p><strong>寄售行&#x2F;交易行</strong></p>
+<ul>
+<li>玩家在游戏内的交易市场中挂卖物品，其他玩家可直接购买。</li>
+<li>优点：通用性强，无需双方在线，可规避定向流通问题，市场有效性好。</li>
+<li>缺点：可能受到系统抽成或者其他交易限制的影响。</li>
+</ul>
+</li>
+<li><p><strong>拍卖行</strong></p>
+<ul>
+<li>物品通过出价竞拍的方式进行交易。</li>
+<li>优点：可以反映物品的真实市场价值。</li>
+<li>缺点：价格波动可以很大，对玩家金币有一定要求。</li>
+</ul>
+</li>
+</ol>
+<p>选择合适的交易形式时需要考虑游戏玩法和市场有效性的平衡。一方面，要确保交易方式不会对玩家的游戏体验造成负面影响；另一方面，交易方式需要能够准确反映游戏内物品的供需关系，保持市场的活跃和公正。</p>
+<p>考虑因素：</p>
+<ul>
+<li>游戏的目标人群和主要玩法</li>
+<li>操作的简便性</li>
+<li>市场的健康发展</li>
+</ul>
+<h3><span id="四货币">（四）货币</span></h3><p>在游戏中的货币（流通货币）主要体现价值尺度和流通手段这两种职能。</p>
+<h4><span id="虚实不同">虚实不同</span></h4><h4><span id="职能">职能</span></h4><h5><span id="1价值尺度">（1）价值尺度</span></h5><p>价值尺度：用来衡量和表现商品价值。</p>
+<p>货币本身也是商品，货币的价格就是对现金的汇率。</p>
+<p>货币的价值是由玩家的投入，即劳动和资本，和其使用价值，即转化体验的能力即使用价值所决定的。货币的价格受供给与需求影响。</p>
+<p>在完全竞争的市场条件下，当游戏设定不变时，货币的价格会在合理的范围内浮动。</p>
+<p><img src="../images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/Kdnib2MPzoJXgQxRFqHc0qkBnsb.png"></p>
+<h5><span id="2流通手段">（2）流通手段</span></h5><p>货币充当商品交换媒介的职能。</p>
+<p>流通所需要的货币量即流通币的存量在游戏运营阶段调控经济时最重要的指标。</p>
+<p><img src="../images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/SX3ubzWWwowtooxJuvpccMSnnbf.png"></p>
+<ul>
+<li><p>货币存量</p>
+<ul>
+<li>游戏内货币存量指的是在特定时刻，玩家手中和游戏内流通的货币总量。</li>
+<li>游戏运营阶段控制货币存量是调控经济的重要手段，以确保货币价值的稳定。</li>
+<li>在货币的存量满足了市场流通的需求时，只要当货币的消耗缺口充分大且存在一定的消费倾向，货币的产出与消耗会达到一个动态的平衡，使得货币存量持续满足流通的需求，这是货币汇率稳定的前提。<br>  <img src="../images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/IA4Cbn2uUo6Z3ExLlkhcOMyrn2f.png"></li>
+</ul>
+</li>
+<li><p>市场流通需求</p>
+<ul>
+<li>货币需满足市场流通的需求，这意味着游戏内的商品和服务交易需要足够的货币来支持。</li>
+<li>如果货币供应过少，可能导致交易不畅和货币价值提高；供应过多则可能导致货币贬值。</li>
+</ul>
+</li>
+<li><p>货币的消耗与产出</p>
+<ul>
+<li>游戏设计应该平衡货币的产出和消耗。产出包括玩家通过游戏活动得到货币，消耗则是玩家在游戏内消费货币（如购买装备、道具等）。</li>
+<li>理想情况下，货币的产出应该与消耗相匹配，以维持货币价值的稳定。</li>
+</ul>
+</li>
+<li><p>价格（汇率）稳定性</p>
+<ul>
+<li>汇率稳定是指游戏货币相对于现实世界货币（如人民币）的兑换率保持相对稳定。</li>
+<li>汇率稳定性是玩家对游戏经济信心的重要体现，且影响游戏的健康和长远发展。</li>
+<li>梦幻西游的运营策略之一是将游戏货币与现实货币（如人民币）之间建立一个兑换比例，这种做法有助于稳定游戏内货币的价值。</li>
+</ul>
+</li>
+<li><p>货币膨胀与紧缩</p>
+<ul>
+<li>货币膨胀发生在货币存量迅速增加而市场流通需求不变甚至下降时，通常导致货币价值下跌。</li>
+<li>货币紧缩则是货币存量减少或市场流通需求增加所引起的，可能导致货币价值上升。</li>
+</ul>
+</li>
+<li><p>交易方程式M＊V＝P＊Q</p>
+<ul>
+<li>M＝货币存量<ul>
+<li>在游戏中，货币存量可以通过游戏设计来控制，比如调整怪物掉落的金币数量、任务奖励等。</li>
+<li>一些游戏如《魔兽世界》，游戏后期可能会出现高物价的现象。这通常是由于货币存量 ( M ) 的增长超出了商品交易量 ( Q ) 的增长。</li>
+</ul>
+</li>
+<li>V＝货币流通速度<ul>
+<li>游戏早期，玩家可能会频繁地买卖，使得( V )相对较高。而随着游戏的发展，尤其是到了后期，玩家可能会倾向于积累货币以备未来大规模消费，导致( V )减小。</li>
+</ul>
+</li>
+<li>P＝商品平均价格<ul>
+<li>游戏中商品的价格可能受到游戏内供需、游戏政策修改、玩家行为等因素的影响。</li>
+</ul>
+</li>
+<li>Q＝商品交易量<ul>
+<li>玩家之间的交易频率以及游戏内商品的供给量。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3><span id="五商品">（五）商品</span></h3><p>游戏中道具的价值是由玩家的投入，和其使用价值即转化体验的能力所决定的。</p>
+<p>道具的市场价格是受供给和需求所影响的，具有差异性的道具价格是难以预估的。</p>
+<p><img src="../images/%E6%B8%B8%E6%88%8F%E7%9A%84%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/WAkVbAUpbogmB7x90RFcfnGTnVg.png"></p>
+<h4><span id="商品价格稳定性">商品价格稳定性</span></h4><p>要保持商品价格稳定，需要：</p>
+<ul>
+<li>保持货币汇率（通常是游戏币和现实货币之间的兑换率）稳定。</li>
+<li>保持游戏内所有商品（包括道具）的价格基本上比较稳定。</li>
+</ul>
+<h4><span id="估算商品价格">估算商品价格</span></h4><ul>
+<li><p>参考同类产品中的同类商品</p>
+<ul>
+<li>对于新游戏或从电脑版到手游的转变，初期商品定价可能会参考现有的类似商品来估算，随后根据市场的供需关系进行调整，直至达到市场平衡。这种方法有点类似于现实世界中的比较销售法（comps），即通过比较类似商品的价格来估算商品的价值。</li>
+<li>对于有差异性的高价值商品（如游戏中稀有的装备或收藏品），它们的价格可能因其稀缺性和独特性而高于常规商品。梦幻西游中的武器价格之所以高且稳定，是因为玩家认为这些物品具有储值功能，可以在未来以相似或更高的价格出售，从而减少了投资损失的风险。这就提供了一个强烈的动机，使玩家愿意在游戏内投入金钱购买这些物品。</li>
+</ul>
+</li>
+<li><p>利用序数理论对比归纳</p>
+<ul>
+<li>通过相对比较的方法对商品进行排序，即便不知道确切价格，也能相对地判断商品的价值高低。这对于评估那些没有具体市场定价的商品特别有用。</li>
+</ul>
+</li>
+<li><p>量化商品的重置成本</p>
+<ul>
+<li>通过估计创建某个道具所需的资源和时间成本，可以确定其大致的价值。例如在游戏中，如果一个武器需要收集稀有材料，那么这些材料的获取难度将直接影响到武器的成本和最终价格。</li>
+</ul>
+</li>
+</ul>
+<h4><span id="价格的异常情况">价格的异常情况</span></h4><p>有时，市场价格可能与供需关系所预测的价格不一致。这可能是由于市场垄断或其他游戏外因素导致的价格操纵。</p>
+<h4><span id="商品交易量">商品交易量</span></h4><p>单位时间内市场上发生交易的商品总量。</p>
+<p>可以简单地理解为交易量越高说明游戏的经济系统越好。</p>
+<p>想要设计好开放式经济系统，设计者需要在游戏内给玩家创造足够多的交易动机。</p>
+<h3><span id="六点卡计费游戏的交易设计要点">（六）点卡计费游戏的交易设计要点</span></h3><ul>
+<li>设计足够多的交易动机</li>
+<li>基于资源市场价格变动和存量进行宏观调控<ul>
+<li>通过季度性的促销活动来调动市场，这可以在短时间内引起资源的大量流通，影响市场供需关系，进而影响价格。</li>
+</ul>
+</li>
+</ul>
+<h3><span id="七道具收费游戏的交易设计要点">（七）道具收费游戏的交易设计要点</span></h3><ul>
+<li>限制资源的转移</li>
+<li>不能存在以转移资产为目的，以非正常价格进行的交易<ul>
+<li><strong>价格监控</strong><ul>
+<li>所有交易的价格都必须与商品的市场价值相匹配。</li>
+<li>为了避免被非正常价格的交易影响市场，会有一个接受价格的区间。</li>
+</ul>
+</li>
+<li><strong>采用人工智能进行价格审核</strong><ul>
+<li>网易之前使用人工审核来判断交易价格是否正常，但随着技术的发展，现在已经转向使用人工智能来自动化这一流程。</li>
+<li>AI可以通过分析大量的交易数据来判断某一笔交易的价格是否正常，从而防止资源的非法转移和市场操纵。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3><span id="八限制工作室">（八）限制工作室</span></h3><ul>
+<li><p>腾讯游戏：信用积分＋TP系统</p>
+<ul>
+<li>游戏信用积分：腾讯利用玩家行为的大数据分析来评估玩家的信用积分，这个积分代表了玩家的行为是否正常、是否有作弊等不良行为的可能性。</li>
+<li>监控软件：通过在游戏客户端进行检测，来监控和防止第三方软件的干扰，尤其是外挂和脚本。</li>
+<li>层次分析法和规则引擎：信用积分的计算可能结合了层次分析法（AHP）和规则引擎，以精确定义玩家的行为标准。</li>
+</ul>
+</li>
+<li><p>网易游戏：设定＋人工智能检测非正常玩家</p>
+<ul>
+<li>游戏内措施：网易设计不利于工作室的机制，比如通过消耗资源来打击纯贩卖资源的工作室。</li>
+<li>人工智能检测：使用AI技术检测非正常玩家行为，利用机器学习算法，如神经网络和注意力网络（Attention Mechanisms），来识别正常与异常玩家的行为模式。</li>
+<li>疲劳模式：对于可疑的行为，网易可能会施加疲劳模式，以减少非正常玩家的游戏收益。</li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/%E6%B8%B8%E6%88%8F%E5%86%85%E5%8D%95%E4%B8%AA%E9%81%93%E5%85%B7%E5%AE%9A%E4%BB%B7%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E5%85%AC%E7%A4%BA/"
+      title="游戏内单个道具定价是否需要公示？"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        游戏内单个道具定价是否需要公示？
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E5%85%A8%E7%90%83%E5%90%8C%E6%9C%8D%EF%BC%9F/"
+      title="全球同服禁令”考"
+     >
+
+    <p class="title-text">
+      
+        全球同服禁令”考
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+  
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <div id="comment-card" class="comment-card">
+    <div class="main-title-bar">
+      <div class="main-title-dot"></div>
+      <div class="main-title">Comments </div>
+    </div>
+    <div id="vcomments"></div>
+  </div>
+  <script>
+      new Valine({"enable":true,"appId":"d11b0rzmnr3P1GXZJHaOnfZg-gzGzoHsz","appKey":"jIiUmjPo1tMCjSeccu3gIDEQ","placeholder":"说点什么~","pageSize":10,"highlight":true,"serverURLs":null,"el":"#vcomments"});
+  </script>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2026 林雪糕<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
+
+<canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+<script src="/js/background.min.js"></script>

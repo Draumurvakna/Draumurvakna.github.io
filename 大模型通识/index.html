@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+
+
+<html theme="light" showBanner="true" hasBanner="false" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+<!-- Gaug.es Analytics -->
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', 'true');
+    t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+    t.src = 'https://d36ee2fcip1434.cloudfront.net/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+<!-- End Gaug.es Analytics -->
+
+
+  
+  <title>大模型通识 | Migao&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  
+
+  <meta name="description" content="大模型技术基础与应用通识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大模型通识">
+<meta property="og:url" content="https://draumurvakna.github.io/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/index.html">
+<meta property="og:site_name" content="Migao&#39;s Blog">
+<meta property="og:description" content="大模型技术基础与应用通识">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/DH1EbYUovow9JzxfLNXcjw6dnQf.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/Ruy0bxy56o9AzQxgJ7WcGXZRnrb.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/CLkzbwHTkoEQWGxmbIIcIUWCnCg.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/M8xvbSExNo6tiGx2gb4cWCwbnkg.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/Xr76bO7Mcoe5WbxUWm9cJlBPnwf.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/Kg0ObZJEvo8pSQxqpmdckPOXnmd.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/FoGPbiOGYoc8NZxul70c9VZKnkc.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/LrC4bUMaOoNYu4xhKFUcDD2AnKf.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/AqPNbVxTMoIy92xJdHVcQ5DRnqf.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/A7ixbX7gEor3m9xsCYlc0Qffnmg.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/VoIpbuvjLouG35xtrx8c2w1InEb.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/Xuj8bTV7uoyWRxx0ChPc9P3on2f.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/YS6AbvlnLoxZ8kxZHwYc5uOJnic.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/DIzNbDayXoYbWYxiNeDcuhBunMb.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/JLcBbSijcod2GPxjQJEcucy5nOe.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/TB5GbVtdmoZLNZx9YUbcVNXvneH.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/FckrbtZUOoDRrexSQP0cC8nzn1f.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/Mpt8b6CiYoMjN8xKo5Ncvq4fngg.png">
+<meta property="og:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/JE98bSP4AoF7WVxs27ccHaAVnzb.png">
+<meta property="article:published_time" content="2026-03-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-09T17:52:31.535Z">
+<meta property="article:author" content="lxg">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="大模型">
+<meta property="article:tag" content="技术">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://draumurvakna.github.io/images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/DH1EbYUovow9JzxfLNXcjw6dnQf.png">
+  
+  
+    <link rel="icon" href="/icecream.icon.ico" type="image/x-icon">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Migao's Blog </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/photography">Photography</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/photography">Photography</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/images/avatar.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">林雪糕 </div>
+      <div class="dot"></div>
+      <div class="subtitle">法律人也要写博客！ </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk0MTEyODUyMA==&action=getalbum&album_id=2537255885711048705&subscene=126&scenenote=https%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMzk0MTEyODUyMA%3D%3D%26mid%3D2247486101%26idx%3D1%26sn%3D6a43e57a3abd6382261e8cd5156ca7b6%26chksm%3Dc3098ac24893f702dabbbdb992a3f96a3277eed8b2375f67d067df0fd67662bbd3f82ed0f973%26scene%3D126%26sessionid%3D1730190028%26subscene%3D227%26clicktime%3D1730190033%26enterid%3D1730190033%26key%3Ddaf9bdc5abc4e8d07f0422f6e7f96cdcd6f23cb2968f228deaa4f763f6aca3ef9649f0553f639257a958c897689ae42b1d90846f53fb61d9fc55bef072cb5d19900662828c0df74f06dcead039fa5fa68ae7cf8be1915bd37e4497cdd6b212a065e2b4261f8a96dfcb5dcd52a4b327a6f8f61b41dc2d102497860435a01b7b6f%26ascene%3D0%26uin%3DMTg1MTEyNzY3NA%253D%253D%26devicetype%3DWindows%2B11%2Bx64%26version%3D63090c11%26lang%3Dzh_CN%26countrycode%3DCN%26exportkey%3Dn_ChQIAhIQCk93BtxjuaL6c%252BGspMb0sRLmAQIE97dBBAEAAAAAAJwmGFMQgGsAAAAOpnltbLcz9gKNyK89dVj0mOz8JelrRBwzgBHHK5uKvbZNISqkP2q6LXB%252BS9Ku49h0QJOJnSUw1SpLqgac5ohL9Slq8YvUcuHqY5aGjzgqIhO4aAcTkS%252BlN39KA%252B5CjDEHaPhGLB8Ez8trXzMYqgyEn5oYgm54k%252FsdLtVthoNDcI0U83ORs1yJORk2sTgJCD%252BuLGh1Uf91VUs%252FxfADbz0CCysSqj8bpCnODMee9LP6fY0Bx2vt%252FTd2hbj1hHRxXRv75C2iV8Ff8jRPDU9VMC%252FZ%26acctmode%3D0%26pass_ticket%3DE2oQMSCabSWCZrwrdEdTnZciclf2aRNoFU06jS%252B8jYm2l%252B29AoN5kUGKAvL5SJ4w%26wx_header%3D1%26fasttmpl_type%3D0%26fasttmpl_fullversion%3D7446448-zh_CN-zip%26fasttmpl_flag%3D1&nolastread=1#wechat_redirect" title="公众号"><i class="fa-solid fa-file"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://www.instagram.com/migaosama0211/" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://weibo.com/u/6409598688" title="Weibo"><i class="fa-brands fa-weibo"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <a class="recent-link" href="/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/" title="大模型通识" >
+            <div class="recent-link-text">
+              大模型通识
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/%E7%BD%91%E9%A1%B5%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%95/" title="网页读书记录" >
+            <div class="recent-link-text">
+              网页读书记录
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/40-%E6%AC%A7%E7%9B%9F%E6%B3%95%E5%AD%A6%E4%B9%A0%E9%9A%8F%E8%AE%B0/" title="欧盟法学习随记" >
+            <div class="recent-link-text">
+              欧盟法学习随记
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/39-%E5%85%AC%E5%8F%B8%E5%9E%AB%E4%BB%98%E8%82%A1%E6%9D%83%E8%BD%AC%E8%AE%A9%E6%AC%BE/" title="公司垫付股权转让款后，股东欠付且股权被冻结，怎么办？" >
+            <div class="recent-link-text">
+              公司垫付股权转让款后，股东欠付且股权被冻结，怎么办？
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/38-%E9%A6%99%E6%B8%AF%E5%AF%B9%E5%81%B7%E6%8B%8D%E9%97%AE%E9%A2%98%E6%98%AF%E5%A6%82%E4%BD%95%E8%A7%84%E5%88%B6%E7%9A%84/" title="香港对偷拍行为是如何规制的？" >
+            <div class="recent-link-text">
+              香港对偷拍行为是如何规制的？
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Categories</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/LAW/">
+                LAW
+                <div class="category-count">71</div>
+            </a>
+        
+            <a class="category-link" href="/categories/ESSAY/">
+                ESSAY
+                <div class="category-count">7</div>
+            </a>
+        
+            <a class="category-link" href="/categories/NOTES/">
+                NOTES
+                <div class="category-count">6</div>
+            </a>
+        
+            <a class="category-link" href="/categories/BUSINESS/">
+                BUSINESS
+                <div class="category-count">8</div>
+            </a>
+        
+            <a class="category-link" href="/categories/READING/">
+                READING
+                <div class="category-count">14</div>
+            </a>
+        
+            <a class="category-link" href="/categories/GAME/">
+                GAME
+                <div class="category-count">4</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/DATA/" rel="tag">DATA</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/GDPR/" rel="tag">GDPR</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/IP/" rel="tag">IP</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/LITERATURE/" rel="tag">LITERATURE</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Self-Help/" rel="tag">Self-Help</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/UA/" rel="tag">UA</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E4%B9%B0%E9%87%8F/" rel="tag">买量</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E4%BA%BA%E6%9D%83/" rel="tag">人权</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E4%BB%A5%E8%89%B2%E5%88%97/" rel="tag">以色列</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E4%BB%B2%E8%A3%81/" rel="tag">仲裁</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E4%BC%A0%E8%AE%B0/" rel="tag">传记</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%81%A5%E5%BA%B7/" rel="tag">健康</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%85%AC%E5%8F%B8%E6%B3%95/" rel="tag">公司法</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%85%BB%E7%94%9F/" rel="tag">养生</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%86%85%E5%AE%B9%E8%BF%90%E8%90%A5/" rel="tag">内容运营</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%88%86%E9%94%80/" rel="tag">分销</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%88%91%E4%BA%8B/" rel="tag">刑事</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%88%91%E6%B3%95/" rel="tag">刑法</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8A%A0%E5%AF%86/" rel="tag">加密</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8A%B3%E5%8A%A8%E6%B3%95/" rel="tag">劳动法</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8F%8D%E4%B8%8D%E6%AD%A3%E5%BD%93%E7%AB%9E%E4%BA%89/" rel="tag">反不正当竞争</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8F%8D%E5%9E%84%E6%96%AD/" rel="tag">反垄断</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%8F%91%E8%A1%8C/" rel="tag">发行</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%90%88%E5%90%8C%E6%B3%95/" rel="tag">合同法</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%90%88%E8%A7%84/" rel="tag">合规</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%93%B2%E5%AD%A6/" rel="tag">哲学</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%9B%BD%E9%99%85%E5%85%B3%E7%B3%BB/" rel="tag">国际关系</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag">大模型</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%A4%A7%E9%99%86/" rel="tag">大陆</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%A5%B3%E6%80%A7%E4%B8%BB%E4%B9%89/" rel="tag">女性主义</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%A9%9A%E5%A7%BB/" rel="tag">婚姻</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%AE%89%E5%85%A8/" rel="tag">安全</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B7%B4%E8%A5%BF/" rel="tag">巴西</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B9%BF%E5%91%8A/" rel="tag">广告</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%84%8F%E5%A4%A7%E5%88%A9/" rel="tag">意大利</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%89%8B%E6%9C%BA/" rel="tag">手机</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%89%A7%E8%A1%8C/" rel="tag">执行</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%8A%96%E9%9F%B3/" rel="tag">抖音</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%95%99%E8%82%B2%E5%AD%A6/" rel="tag">教育学</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%96%87%E5%8C%96/" rel="tag">文化</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%96%87%E5%A8%B1/" rel="tag">文娱</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%97%A5%E6%9C%AC/" rel="tag">日本</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%97%B6%E5%B0%9A/" rel="tag">时尚</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%9C%AA%E6%88%90%E5%B9%B4%E4%BF%9D%E6%8A%A4/" rel="tag">未成年保护</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%AC%A7%E7%9B%9F/" rel="tag">欧盟</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84/" rel="tag">法律法规</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%B3%95%E5%BE%8B%E9%A3%8E%E9%99%A9/" rel="tag">法律风险</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%B6%89%E5%A4%96/" rel="tag">涉外</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%B8%A0%E9%81%93/" rel="tag">渠道</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%89%88%E6%9D%83/" rel="tag">版权</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/" rel="tag">生活感悟</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E5%8D%8F%E8%AE%AE/" rel="tag">用户协议</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%94%B5%E5%95%86/" rel="tag">电商</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%94%B5%E5%BD%B1/" rel="tag">电影</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%9B%91%E7%AE%A1/" rel="tag">监管</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83/" rel="tag">知识产权</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A/" rel="tag">社会</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A%E5%AD%A6/" rel="tag">社会学</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E6%B3%95/" rel="tag">程序法</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%A8%8E%E6%B3%95/" rel="tag">税法</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%B3%95sama/" rel="tag">糕sama</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E5%8F%B2/" rel="tag">经济史</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6/" rel="tag">经济学</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E7%B3%BB%E7%BB%9F/" rel="tag">经济系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%BE%8E%E5%9B%BD/" rel="tag">美国</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%81%8C%E5%9C%BA/" rel="tag">职场</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%90%A5%E5%85%BB%E5%AD%A6/" rel="tag">营养学</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%90%A5%E9%94%80/" rel="tag">营销</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E9%81%93%E5%85%B7%E3%80%81%E8%99%9A%E6%8B%9F%E5%B8%81%E4%BB%A5%E5%8F%8A%E6%B3%95%E5%AE%9A%E8%B4%A7%E5%B8%81%E9%97%AE%E9%A2%98/" rel="tag">虚拟道具、虚拟币以及法定货币问题</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%A1%8C%E6%94%BF%E4%BA%8B%E5%8A%A1/" rel="tag">行政事务</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/" rel="tag">讲座笔记</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1/" rel="tag">设计</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AF%89%E8%AE%BC/" rel="tag">诉讼</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6/" rel="tag">读书</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E4%BC%9A/" rel="tag">读书会</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%B0%83%E6%9F%A5%E6%8A%A5%E5%91%8A/" rel="tag">调查报告</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%B0%83%E8%A7%A3/" rel="tag">调解</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%94%80%E5%94%AE/" rel="tag">销售</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%9D%9E%E8%99%9A%E6%9E%84/" rel="tag">非虚构</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%9F%A9%E5%9B%BD/" rel="tag">韩国</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%9F%B3%E4%B9%90/" rel="tag">音乐</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%A6%99%E6%B8%AF/" rel="tag">香港</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-大模型通识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        大模型通识
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-03-09T16:00:00.000Z" itemprop="datePublished">2026-03-10</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/NOTES/">NOTES</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            15k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag">大模型</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1><span id="第1章-大模型通识">第1章 大模型通识</span></h1><h2><span id="一-关于大模型">一、关于大模型</span></h2><ul>
+<li>机器学习：研究计算机如何在没有明确编程的情况下，通过对数据进行分析、学习，自动改进其行为或做出预测。</li>
+<li>监督学习：拿着一个苹果和一个香蕉，告诉孩子：“这是苹果，它的形状是圆的，颜色通常是红色或绿色；这是香蕉，它的形状是长条形，颜色通常是黄色。”孩子会学习到特征与类别的对应关系，预测出新拿出的水果是苹果还是香蕉。</li>
+<li>无监督学习：让孩子观察一堆水果，没有直接告诉他每一个水果的名称，而是鼓励他自己找出如何根据形状、颜色等属性将这些水果分组的方法。</li>
+<li>强化学习：不直接教孩子苹果和香蕉的区别，而是每次展示一个水果让他进行判断。如果他判断正确，就给他一个奖励（比如一块糖果）；如果判断错误，则不给奖励。<ul>
+<li>深度学习：机器学习的一个分支，主要使用神经网络模型（由多个隐藏层组成）对数据进行学习和表示。深度学习算法试图模拟人类大脑的工作方式，其灵感来源于神经生物学，它通过对大量数据的学习，自动提取出数据的高层次特征和模式，从而实现图像识别、语音识别、自然语言处理等任务。按照架构的不同，神经网络可以分为：卷积神经网络（CNNs）、循环神经网络（RNNs）、Transformer网络等等。</li>
+<li>生成式人工智能：深度学习中快速增长的子集，使用了大模型提供支持，在大量原始、未标记的数据基础上对深度学习模型进行预训练，使得机器能够“理解”语言甚至图像，并能够根据需要自动生成内容。</li>
+</ul>
+</li>
+</ul>
+<p>2021年，斯坦福大学的研究员团队发表了一篇论文，提出了<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2108.07258">Foundational Models</a>（基础模型，即大模型）的概念。简单来说，它是一类具有大量参数（通常在十亿以上），能在极为广泛的数据上进行训练，并适用于多种任务和应用的预训练深度学习模型。</p>
+<p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/DH1EbYUovow9JzxfLNXcjw6dnQf.png"></p>
+<p>大模型通过广泛数据集的训练后，可以适用于多种多样的需求</p>
+<p>2022年11月，OpenAI公司发布了ChatGPT——一种先进的人工智能语言模型，专为对话交互而设计，具有强大的自然语言理解和生成能力，可以完成撰写论文、邮件、脚本、文案、翻译、代码等任务。ChatGPT的发布标志着AI大模型在语言理解与生成能力上的重大突破，对全球AI产业产生了深远影响，开启了人工智能大模型应用的新篇章。</p>
+<p>2023年3月，国内厂商纷纷发布各自研发的大语言模型产品。百度发布文心一言、阿里巴巴集团千问大模型开始企业内测、商汤科技带来了商量SenseChat、360启动360智脑企业内测、华为盘古大模型、科大讯飞1+N认知大模型、昆仑万维的天工大模型、以及京东言犀、腾讯混元……百模大战一触即发。</p>
+<p>无论是语言模型还是多模态模型，均在大规模多语言和多模态数据上进行预训练，并通过高质量数据进行后期微调以贴近人类偏好。</p>
+<p>大模型的训练整体上分为三个阶段： <strong>预训练</strong>、 <strong>监督微调</strong>（SFT）以及 <strong>对齐偏好</strong>（如RLHF）。</p>
+<p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/Ruy0bxy56o9AzQxgJ7WcGXZRnrb.png"></p>
+<p>预训练(Pre-training)：在这个阶段大模型会从海量的互联网文本中学习，掌握语言的统计规律、事实性知识以及上下文关联能力。但它本质上只是学会了“预测下一个词“或“补全句子”，并没有真正理解人类提问的意图。例如，如果我们向一个仅经过预训练的模型提问：埃菲尔铁塔在哪个国家？”，它可能不会直接回答法国”，而是延续语料中的常见模式，输出类似东方明珠在哪个城市？”这样的无关内容。这说明它虽然“知道很多”，却还不懂得如何回应人的请求。因此，我们需要通过监督微调（SFT）来教会它遵循指令。</p>
+<p>监督微调(SFT,Supervised Fine Tuning)：大模型会学习大量由人类精心构造的指令-回答”样本，涵盖日常对话、逻辑推理、专业问答等多种场景。通过这些示范，模型学会将用户的输入理解为明确的指令，并给出有针对性的回应。此时，如果我们再问它：“埃菲尔铁塔在哪个国家？”，它就能正确回答“法国”，而不是机械地续写句子。经过SFT，模型已经具备了基本的指令遵循能力和任务完成能力。但它仍可能输出不恰当的内容——比如包含偏见、虚假信息、不安全言论等，因为它只学会了“怎么答”，还没学会“什么该答、什么不该答”。</p>
+<p>对齐偏好(Preference Alignment)：、对于大模型来说，在这个阶段，它会针对同一个问题生成多个不同的回答，由人类评估者根据有用性、安全性、礼貌性、事实准确性等标准进行比较和选择。模型通过学习这些人类更喜欢哪个回答的信号，逐渐调整自己的输出方式，使得回答不仅正确，而且更符合人类的价值观和交流习惯。</p>
+<p>实现对齐的方式有很多：</p>
+<ol>
+<li>基于人类反馈的强化学习(RLHF,Reinforcement Learning from Human Feedback),先用人类标注的数据训练一个“评分老师（奖励模型），再让这个老师指导大模型改进回答。</li>
+<li>DPO(Direct Preference Optimization),跳过训练老师的中间步骤,直接根据人类偏好数据优化模型本身。这个方法简化了训练流程，效果也很好。</li>
+</ol>
+<p>无论采用哪种方法，目标都是一致的：让模型不仅能答对问题”，还能答得“让人放心”，避免有害、歧视、违法或令人不适的内容。</p>
+<p>基础模型（大模型）主要有以下四个特点：</p>
+<table>
+<colgroup>
+<col width="410">
+<col width="410">
+</colgroup>
+<tbody>
+<tr><td><p>规模和参数量大<br>大模型通过其庞大的规模（拥有从数亿到数千亿级别的参数数量）来捕获复杂的数据模式，使得它们能够理解和生成极其丰富的信息。</p></td><td><p>适应性和灵活性强<br>模型具有很强的适应性和灵活性，能够通过微调（fine-tune）或少样本学习高效地迁移到各种下游任务，有很强的跨域能力。</p></td></tr>
+<tr><td><p>广泛数据集的预训练<br>大模型使用大量多样化的数据进行预训练，以学习广泛的知识表示，能够掌握语言、图像等数据的通用特征。</p></td><td><p>计算资源需求大<br>巨大的模型规模带来了高昂的计算和资源需求，包括但不限于数据存储、训练时间、能量消耗和硬件设施。</p></td></tr>
+</tbody>
+</table>
+
+<p>按照应用场景，大模型可以大致分为：</p>
+<p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/CLkzbwHTkoEQWGxmbIIcIUWCnCg.png"></p>
+<ul>
+<li>大语言模型（LLM）：这类大模型专注于自然语言处理（NLP），旨在处理语言、文章、对话等自然语言文本。它们通常基于深度学习架构（如Transformer模型），经过大规模文本数据焦训练而成，能够捕捉语言的复杂性，包括语法、语义、语境以及蕴含的文化和社会知识。语言大模型典型应用包括文本生成、问答系统、文本分类、机器翻译、对话系统等。示例包括：</li>
+<li>多模态模型：多模态大模型能够同时处理和理解来自不同感知通道（如文本、图像、音频、视频等）的数据，并在这些模态之间建立关联和交互。它们能够整合不同类型的输入信息，进行跨模态推理、生成和理解任务。多模态大模型的应用涵盖视觉问答、图像描述生成、跨模态检索、多媒体内容理解等领域。</li>
+</ul>
+<p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/M8xvbSExNo6tiGx2gb4cWCwbnkg.png"></p>
+<h2><span id="二-大模型是如何工作的">二、大模型是如何工作的</span></h2><p>大模型处理提示词的工作流程可以分为两部分，第一部分是分词化与词表映射，第二部分为生成文本。</p>
+<h3><span id="一分词化tokenization与词表映射">（一）分词化（Tokenization）与词表映射</span></h3><p>分词化（Tokenization）是自然语言处理（NLP）中的重要概念，它是将段落和句子分割成更小的分词（token）的过程。以下是一个英文句子：</p>
+<blockquote>
+<p><em>I want to study ACA.</em></p>
+</blockquote>
+<p>为了让机器理解这个句子，对字符串执行分词化，将其分解为独立的单元。使用分词化，我们会得到这样的结果:</p>
+<blockquote>
+<p><em>[‘I’ ,’want’ ,’to’ ,’study’ ,’ACA’ ,’.’]</em></p>
+</blockquote>
+<p>将一个句子分解成更小的、独立的部分可以帮助计算机理解句子的各个部分，以及它们在上下文中的作用，这对于进行大量上下文的分析尤其重要。分词化有不同的粒度分类：</p>
+<ul>
+<li>词粒度（Word-Level Tokenization）分词化，如上文中例子所示，适用于大多数西方语言，如英语。</li>
+<li>字符粒度（Character-Level）分词化是中文最直接的分词方法，它是以单个汉字为单位进行分词化。</li>
+<li>子词粒度（Subword-Level）分词化，它将单词分解成更小的单位，比如词根、词缀等。这种方法对于处理新词（比如专有名词、网络用语等）特别有效，因为即使是新词，它的组成部分（子词）很可能已经存在于词表中了。</li>
+</ul>
+<p>每一个token都会通过预先设置好的词表，映射为一个 token id，这是token 的“身份证”，一句话最终会被表示为一个元素为token id的列表，供计算机进行下一步处理。</p>
+<p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/Xr76bO7Mcoe5WbxUWm9cJlBPnwf.png"></p>
+<p>上面这两句话包含了16个tokens。</p>
+<p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/Kg0ObZJEvo8pSQxqpmdckPOXnmd.png"></p>
+<h3><span id="二大语言模型生成文本的过程">（二）大语言模型生成文本的过程</span></h3><p>大语言模型的工作概括来说是根据给定的文本预测下一个token。对我们来说，看似像在对大模型提问，但实际上是给了大模型一串提示文本，让它可以对后续的文本进行推理。</p>
+<p>大模型的推理过程不是一步到位的，当大模型进行推理时，它会基于现有的token，根据概率最大原则预测出下一个最有可能的token，然后将该预测的token加入到输入序列中，并将更新后的输入序列继续输入大模型预测下一个token，这个过程叫做自回归。直到输出特殊token（如&lt;EOS&gt;，end of sentence，专门用来控制推理何时结束）或输出长度达到阈值，</p>
+<p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/FoGPbiOGYoc8NZxul70c9VZKnkc.png"></p>
+<h1><span id="第2章-大模型使用">第2章 大模型使用</span></h1><h2><span id="一-借助-api-让大模型自动化地处理任务">一、借助 API 让大模型自动化地处理任务</span></h2><ul>
+<li>需求介绍：产品需要对客户发起一次产品调研，需统计出用户认为产品哪些方面有待改进，如价格过高、售后支持不足、产品使用体验不佳等。</li>
+<li>现状：收集到1万多份主观反馈，并未结构化。</li>
+<li>难点：要求在1天内做出分析。</li>
+</ul>
+<p>在这样的情况下，借助大模型服务的 API 可以大大简化和加速文本处理的任务。可以通过一段简单的代码来解决这一问题：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment"># 导入专门用于连接 Google Gemini 的工具箱</span></span><br><span class="line"><span class="keyword">from</span> langchain_google_genai <span class="keyword">import</span> ChatGoogleGenerativeAI</span><br><span class="line"><span class="comment"># 设置API Key</span></span><br><span class="line">os.environ[<span class="string">&quot;GOOGLE_API_KEY&quot;</span>] = <span class="string">&quot;你的_API_KEY&quot;</span></span><br><span class="line">llm = ChatGoogleGenerativeAI(model=<span class="string">&quot;gemini-1.5-flash&quot;</span>)</span><br><span class="line"><span class="comment"># 准备要分类的文本（这里模拟一条 Excel 里的反馈）</span></span><br><span class="line">feedback = <span class="string">&quot;性价比不高，我觉得不值这个价钱。&quot;</span></span><br><span class="line"><span class="comment"># 下达指令并获取结果</span></span><br><span class="line">result = llm.invoke(<span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你需要对用户的反馈进行原因分类。</span></span><br><span class="line"><span class="string">分类包括：价格过高、售后支持不足、产品使用体验不佳、其他。</span></span><br><span class="line"><span class="string">回答格式为：分类结果：xx。</span></span><br><span class="line"><span class="string">用户的问题是：<span class="subst">&#123;feedback&#125;</span></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br><span class="line"><span class="comment"># 打印出 AI 告诉我们的答案</span></span><br><span class="line"><span class="built_in">print</span>(result.content)</span><br></pre></td></tr></table></figure>
+
+<h2><span id="二-通过优化提示词来提升回答质量">二、通过优化提示词来提升回答质量</span></h2><h3><span id="一通用大模型技巧">（一）通用大模型技巧</span></h3><h4><span id="直接提问">直接提问</span></h4><p>直接提问，也称为 <strong>零样本提示（Zero-Shot Prompting），</strong>即不给大语言模型提供案例，完全依靠 LLM 理解和处理能力完成任务。目前大部分开源和商用的大语言模型已经经过了大量的预训练和指令调试，能够很好的理解并响应用户的直接提问。适用于 <strong>目标明确、问题简单、答案确定且唯一</strong>等场景。</p>
+<p>直接提问时，可遵循以下原则：</p>
+<ul>
+<li><strong>简洁</strong>：尽量用最简短的方式表达问题。过于冗长的问题可能包含多余的信息，导致模型理解错误或答非所问。</li>
+<li><strong>具体</strong>：避免抽象的问题，确保问题是具体的，不含糊。</li>
+<li><strong>详细上下文</strong>：如果问题涉及特定上下文或背景信息，要提供足够的详情以帮助模型理解，即使是直接提问也不例外。</li>
+<li><strong>避免歧义</strong>：如果一个词或短语可能有多重含义，要么明确其含义，要么重新表述以消除歧义。</li>
+<li><strong>逻辑清晰</strong>：问题应逻辑连贯，避免出现逻辑上的混淆或矛盾，这样才能促使模型提供有意义的回答。</li>
+</ul>
+<p>为大语言模型提供如下不同的提示词，得到的答案质量会有明显差距。</p>
+<p>直接提问效果在很大程度上取决于所使用的模型的理解能力和泛化能力，它无法很好地处理复杂、模糊或多义性的问题，当需要较深入的背景知识或分析时，可能无法准确了解用户的真正意图，可以尝试在提示词中增加示例样本、分配角色、提示写作风格&#x2F;输出格式或构建思维链和思维树拆解复杂任务等方式解决。</p>
+<h4><span id="增加示例">增加示例</span></h4><p>在提示词中提供少量（通常几个或几十个）示例，也称为 <strong>少样本提示（Few-Shot Prompting）</strong>，以帮助模型更好地理解任务要求和期望输出。比如：</p>
+<ul>
+<li>让 LLM 跟随我们所要求的规范、格式、概念、文法、语气进行输出。</li>
+<li>提供进一步推理的参考，比如让大模型学会数学运算或按照示例方式进行逻辑推理。</li>
+</ul>
+<p>在英文缩写比较多的专业技术文档翻译场景，我们可以尽可能地为 LLM 提供一些缩写的翻译示例，然后再让 LLM 完成后续的翻译工作：</p>
+<p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/LrC4bUMaOoNYu4xhKFUcDD2AnKf.png"></p>
+<p>值得一提的是，这种方式比较适合翻译量不大，且示例的数量可穷举的场景，可以轻量、快速地完成翻译工作。但是当需要成千上万的专业术语词条示例辅助翻译的场景，这种方式就不够了，也不够方便，我们可以让大语言模型接入专业的术语库，来增强大语言模型的能力，也即 <strong>检索增强生成（Retrieval-Augmented Generation），简称RAG</strong>。</p>
+<p>示例的质量和数量会直接影响回答的结果，增加示例时可参考以下技巧：</p>
+<ul>
+<li><strong>精选代表性样本</strong>：选择具有代表性的示例，覆盖任务的各种情况，同时避免使用可能引起模型混淆的极端或边缘案例，确保模型能从有限的数据中学习到任务的核心特征。</li>
+<li><strong>保证示例的多样性</strong>：尽可能覆盖任务的各种角度和情境，确保模型能从有限的数据中学习到任务的核心特征。</li>
+<li><strong>使用相似的格式和结构</strong>：在所有示例中使用相似的提示格式和结构，使模型能够清晰识别输入与输出的关系。</li>
+<li><strong>让大语言模型生成示例</strong>：实践时，我们还可以先让 LLM 按照提示生成一些示例，再进行筛选或人工调整，以提高示例质量和针对性。</li>
+</ul>
+<h4><span id="分配角色">分配角色</span></h4><p>赋予模型一个具体的角色或身份，如“作为经验丰富的营养师”，来引导模型在特定角色视角下生成回答。</p>
+<p>分配角色适用以下场景：</p>
+<ul>
+<li>需要专业知识或特定视角的问题解答。例如，模拟老师、医生、律师等回答相关领域的问题。</li>
+<li>模拟特定人物或角色的语言风格。例如，模仿某个著名人物（如历史人物或文学角色）语言风格的文本时。</li>
+<li>进行角色扮演游戏或创作。在创意写作或角色扮演游戏中扮演指定的角色，与使用者进行互动。</li>
+<li>在特定行业内进行决策模拟。例如，模拟一个管理咨询师来分析商业案例或提供商业建议。</li>
+</ul>
+<p>分配角色引导模型生成符合特定情境和对话逻辑的内容，可遵循以下技巧：</p>
+<ul>
+<li><p><strong>明确角色身份与特性</strong></p>
+<ul>
+<li>确定角色的基本属性，如年龄、性别、职业、性格、技能、价值观等。</li>
+<li>赋予角色相关领域的专业知识或特殊背景，如专家、学者、历史人物、虚构角色等。</li>
+</ul>
+</li>
+<li><p><strong>设定角色目标与动机</strong></p>
+<ul>
+<li>为角色设定对话的目标，如寻求信息、说服他人、解决问题、分享观点等。</li>
+<li>揭示角色的内在动机，如个人利益、道德信念、情感需求等，有助于塑造角色的真实性和深度。</li>
+</ul>
+</li>
+<li><p><strong>设定角色语言风格</strong>：</p>
+<ul>
+<li>根据角色性格、教育水平、文化背景等设定其语言习惯、用词选择、句式结构、口头禅等。</li>
+<li>规定角色在对话中的情绪状态，如冷静理智、激动愤怒、悲伤失落、幽默风趣等，影响其表达方式。</li>
+</ul>
+</li>
+<li><p><strong>设定角色规则约束</strong>：规定角色在对话中的行为约束，如不得人身攻击、保持礼貌尊重、遵守讨论主题等。</p>
+</li>
+<li><p><strong>动态调整角色设定</strong>：</p>
+<ul>
+<li>随着对话深入，适时调整角色设定以适应新的情境和话题，如角色态度转变、关系演变、目标更新等。</li>
+<li>向模型反馈角色表现，如偏离设定、缺乏个性、对话僵化等，及时修正角色设定并引导模型调整。</li>
+</ul>
+</li>
+</ul>
+<h4><span id="限定输出风格x2f格式">限定输出风格&#x2F;格式</span></h4><p>大语言模型非常善于撰写论文、文章等内容，不过如果我们仅仅简单地告诉大语言模型一些宽泛的提示，大语言模型有可能会生成枯燥、平淡、空洞的内容，这些内容往往与我们期望的结果有较大的出入。可以在提示词中增加“ <strong>风格</strong>”的限定。</p>
+<p>为了更好的限定“ <strong>风格</strong>”，准确引导模型写出符合需求的内容，一些技巧：</p>
+<ol>
+<li><strong>明确指出所需的内容类型</strong>，如“论文&#x2F;散文&#x2F;诗歌&#x2F;新闻报道&#x2F;剧本&#x2F;日记”等。</li>
+<li><strong>用形容词限定风格</strong>，如“严谨客观”、“感性抒情”、“幽默诙谐”、“庄重典雅”等。</li>
+<li><strong>列举风格（代表人物&#x2F;作品）示例</strong>，如“仿照鲁迅先生的笔触描述社会现象”或“以J.K.罗琳的叙述风格撰写一段奇幻冒险故事”。</li>
+<li><strong>设定语境与情感色彩</strong>：为模型设定故事背景、情感基调或角色视角，影响其语言表达和修辞选择，从而形成特定风格。如“以一名二战老兵的视角，深情回忆战场经历”。</li>
+<li><strong>规定语言与句式特点</strong>：要求使用特定词汇、短语、成语、俚语、古语等，或强调长句、短句、排比、反问、比喻等修辞手法的运用，以契合特定风格。</li>
+</ol>
+<p>还可以进一步对 <strong>内容的输出格式</strong>进行限定：</p>
+<ol>
+<li><strong>明确输出长度</strong>：如“撰写一篇关于全球气候变化的新闻报道，标题需简洁明快，概括主题，不超过300字”。</li>
+<li><strong>段落结构</strong>：规定正文的段落数量、每段的大致内容与逻辑关系，如“文章分为引言、主体（分三点论述）和结论三部分”。</li>
+<li><strong>列表与编号</strong>：要求使用项目符号、数字编号等形式列出要点或步骤，如“通过数字编号列出五种有效的时间管理方法，并简要解释”。</li>
+<li><strong>引用与注释</strong>：指示何时使用引号、脚注、尾注、参考文献等格式引用他人观点或资料，如“在论述中适当引用至少两篇相关学术论文，并按照APA格式添加引用和参考文献”。</li>
+<li><strong>格式标记</strong>：如对齐方式（左对齐、居中、右对齐）、字体样式（加粗、斜体、下划线）、缩进、行距、页眉页脚等进行详细说明，甚至可以要求大模型按照JSON格式输出。</li>
+<li><strong>特殊要求</strong>：针对特定场景，如邮件、信函、通知、海报、简历等，规定相应的格式标准，如“按照商务电子邮件的标准格式撰写邀请函，包括收件人、抄送人、主题、问候语、正文、结束语、签名档等部分”。</li>
+</ol>
+<p>当然，我们还可以让大语言模型帮助我们生成限定内容 <strong>风格</strong>和 <strong>格式</strong>的提示词：</p>
+<p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/AqPNbVxTMoIy92xJdHVcQ5DRnqf.png"></p>
+<h4><span id="拆解复杂任务">拆解复杂任务</span></h4><p>把一个复杂的任务，拆解成多个稍微简单的任务，让大语言模型 <strong>分步</strong>来思考问题，称为 <strong>思维链（Chain-of-Thought Prompting, CoT）</strong>提示，这种方式可让大语言模型像人类一样逐步解释或进行推理，从而极大地提升 LLM 的能力。与前面介绍的标准提示不同，该方法不仅寻求答案，还 <strong>要求模型解释其得出答案的步骤</strong>。</p>
+<p>标准提示只给出了答案，而且答案明显是错误的，而思维链提示会展开推理过程，通常通过思维链提示的方式会产生更为准确和可校验的结果。</p>
+<p>没有给 LLM 提供问题解析示例的可以称为 <strong>零样本思维链（Zero-shot CoT）</strong>，相对应地在增加了示例后就变成了 <strong>少样本思维链（Few-shot Cot）。</strong></p>
+<table>
+<colgroup>
+<col width="820">
+</colgroup>
+<tbody>
+<tr><td><p> <strong>零样本思维链 Zero-shot CoT</strong><br>_提示词：_小宝有三盒糖果，每盒糖果有10颗糖，小宝一共有多少颗糖果？<br>答案：给出 <strong>逐步思考</strong>过程_输出：_小宝有三盒糖果，每盒糖果有10颗，那么他一共有的糖果数量就是： 3盒 × 10颗/盒 = 30颗答案：小宝一共有30颗糖果。</p></td></tr>
+<tr><td><p> <strong>少样本思维链 Few-shot CoT</strong><br><em>提示词：</em><br>问题：小宝有三盒糖果，每盒糖果有10颗糖，小宝一共有多少颗糖果？<br>答案：小宝有三盒糖果，每盒糖果有10颗，那么他一共有的糖果数量就是： 3盒 × 10颗/盒 = 30颗，小宝一共有30颗糖果。<br>问题：小明有20个苹果，吃了2个苹果，又买了5个苹果，小明一共有多少颗苹果？<br>答案：给出 <strong>逐步思考</strong>过程_输出：_小明原本有20个苹果，吃了2个，所以剩下：20个 - 2个 = 18个接着他又买了5个苹果，那么他现在总共有：18个 + 5个 = 23个答案：小明一共有23个苹果。</p></td></tr>
+</tbody>
+</table>
+
+<p>有时 LLM 通过 <strong>零样本思维链可能会得到错误的答案</strong>，可以通过增加示例的方式，即 <strong>少样本思维链</strong>，帮助 LLM 理解相关任务并正确执行，如下面的例子中，明显在使用零样本思维链来分析问题后还是获得了错误的答案：</p>
+<p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/A7ixbX7gEor3m9xsCYlc0Qffnmg.png"></p>
+<p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/VoIpbuvjLouG35xtrx8c2w1InEb.png"></p>
+<p>可以根据任务的复杂度来设计提示词，具体有以下几种情况：</p>
+<ol>
+<li><strong>纯指令型</strong>：最直接的互动方式，仅通过简明指令向模型提出需求，适合于寻求快速、基本答案的场景。</li>
+<li><strong>背景</strong>+ <strong>指令</strong>：在指令基础上融入背景信息，为模型创造一个理解和响应任务的框架，尤其适用于需要考虑特定情境或角色定位的任务。</li>
+<li><strong>指令</strong>&#x2F; <strong>背景</strong>+ <strong>输出指示</strong>：在基础指令或背景信息之上，加入输出指示，精确指导模型如何组织和呈现答案，以满足特定的格式或风格要求。</li>
+<li><strong>综合型提示</strong>：结合指令、背景信息、输入数据与输出指示，形成一个全方位的引导体系。这种复合型提示尤为强大，能够在复杂任务中提高模型输出的针对性与质量，尤其是在模型需要从示例中学习并模仿特定风格或结构时。</li>
+</ol>
+<h3><span id="二推理模型技巧">（二）推理模型技巧</span></h3><p>除了通用大模型，目前还有一类专门为“推理”设计的模型—— <strong>推理模型</strong>。</p>
+<p>推理模型通常指专门优化用于逻辑推理、问题解决、多步推断等任务的模型（如DeepSeek-R1、o1），它们通常在数学解题、代码生成、逻辑分析等方面有更好的表现。与通用模型相比，推理模型拥有更强的逻辑能力，因为它经过了大量的专项训练，能够更好地理解复杂的问题，并且在解答时更有条理。但并不是说就一定比通用模型更好。</p>
+<table header_row="1">
+<colgroup>
+<col width="100">
+<col width="360">
+<col width="360">
+</colgroup>
+<thead>
+<tr><th><p> <strong>维度</strong></p></th><th><p> <strong>推理模型</strong></p></th><th><p> <strong>通用模型</strong></p></th></tr>
+</thead>
+<tbody>
+<tr><td><p>设计目标</p></td><td><p>专注于逻辑推理、多步问题求解、数学计算等需要深度分析的任务</p></td><td><p>面向通用对话、知识问答、文本生成等广泛场景</p></td></tr>
+<tr><td><p>训练数据侧重</p></td><td><p>大量数学题解、代码逻辑、科学推理数据集增强推理能力</p></td><td><p>覆盖百科、文学、对话等多领域海量数据</p></td></tr>
+<tr><td><p>典型输出特征</p></td><td><p>输出包含完整推导步骤，注重逻辑链条的完整性</p></td><td><p>输出简洁直接，侧重结果的自然语言表达</p></td></tr>
+<tr><td><p>响应速度</p></td><td><p>复杂推理任务响应较慢（需多步计算）</p></td><td><p>常规任务响应更快（单步生成为主）</p></td></tr>
+</tbody>
+</table>
+
+<p>推理模型还是通用模型？如何选择？</p>
+<ul>
+<li><p><strong>明确的通用任务</strong>：对于明确定义的问题， <strong>通用模型</strong>一般能够很好地处理。</p>
+</li>
+<li><p><strong>复杂任务</strong>：对于非常复杂的任务，且需要给出相对 <strong>更精确和可靠</strong>的答案，推荐使用 <strong>推理模型</strong>。这些任务可能有：</p>
+<ul>
+<li>模糊的任务：任务相关信息很少，你无法提供模型相对明确的指引。</li>
+<li>大海捞针：传递大量非结构化数据，提取最相关的信息或寻找关联&#x2F;差别。</li>
+<li>调试和改进代码：需要审查并进一步调试、改进大量代码。</li>
+</ul>
+</li>
+<li><p><strong>速度和成本</strong>：一般来说推理模型的推理时间较长，如果对于时间和成本敏感，且任务复杂度不高， <strong>通用模型</strong>可能是更好的选择。</p>
+</li>
+</ul>
+<p>当然，还可以在应用中结合使用两种模型：使用推理模型完成Agent的规划和决策，使用通用模型完成任务执行。</p>
+<p>推理模型在面对相对模糊的任务也能给出详尽且格式良好的响应。因此，指示模型“逐步思考”可能反而限制了模型的推理。下面列举了一些适用于推理模型的提示技巧：</p>
+<ul>
+<li><strong>直接提问</strong>：保持提示 <strong>简洁、清晰</strong>，且明确任务限制。</li>
+<li><strong>避免思维链提示</strong>：你无需提示推理模型“逐步思考”或“解释你的推理”，它们本身会进行深入的思考。</li>
+<li><strong>根据模型响应调整提示词</strong>：直接提问推理模型通常能够产生良好的响应，但如果你有更复杂精细的要求，可以在提示词中明确，比如有 <strong>明确的输入信息和输出要求</strong>时，你可以通过 <strong>增加示例</strong>明确这些信息，还可以通过 <strong>分隔符</strong>帮助推理模型区分不同的信息模块。这个过程可以是重复多次的，不断尝试调整提示，让模型不断推理迭代，直到符合你的要求。</li>
+</ul>
+<h2><span id="三-插件增强">三、插件增强</span></h2><p>大模型应用使用插件的决策流程和人类使用工具的流程是一样的。首先接收输入，判断是否需要使用工具及选择合适的工具，然后使用工具并获得返回结果进行后续推理生成。</p>
+<p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/Xuj8bTV7uoyWRxx0ChPc9P3on2f.png"></p>
+<h2><span id="四-rag增强">四、RAG增强</span></h2><h3><span id="一原理">（一）原理</span></h3><p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/YS6AbvlnLoxZ8kxZHwYc5uOJnic.png"></p>
+<p>RAG（的核心实现原理分为三个阶段：索引、检索和生成。</p>
+<ol>
+<li><strong>索引（Indexing）</strong>：原始文档经过清洗后被切分为固定长度或基于语义的文本块（Chunks）。随后，嵌入模型（Embedding Model）将文本块转换为数值向量。这些向量捕捉了文本的深层语义信息，并最终存储在向量数据库中 。</li>
+<li><strong>检索（Retrieval）</strong>：当用户提出问题时，系统将提问转换为向量，并计算该向量与数据库中存储向量之间的数学相似度。最常用的计算方法是余弦相似度。相似度最高的文本块会被提取出来作为参考背景。</li>
+<li><strong>生成（Generation）</strong>：检索到的文本块与用户原始问题被拼接成一段完整的提示词。大模型接收这段包含背景知识的指令，生成最终回答。</li>
+</ol>
+<h3><span id="二量化-rag-应用的表现">（二）量化 RAG 应用的表现</span></h3><h4><span id="第一层检索模块评测-retrieval">第一层：检索模块评测 (Retrieval)</span></h4><p>这一层主要评估系统“找资料”的能力，看它能不能从海量文档中精准定位相关信息。</p>
+<table>
+<colgroup>
+<col width="223">
+<col width="274">
+<col width="323">
+</colgroup>
+<tbody>
+<tr><td><p> <strong>指标名称</strong></p></td><td><p> <strong>定义</strong></p></td><td><p> <strong>业务意义</strong></p></td></tr>
+<tr><td><p> <strong>准确率 (Precision)</strong></p></td><td><p>检索到的文档片段中，真正相关的比例。</p></td><td><p>减少噪音干扰，防止模型被无关信息误导。</p></td></tr>
+<tr><td><p> <strong>召回率 (Recall)</strong></p></td><td><p>知识库中所有相关的片段，被检索到了多少。</p></td><td><p>确保信息完整，避免遗漏核心答案。</p></td></tr>
+<tr><td><p> <strong>MRR / Hit Rate</strong></p></td><td><p>正确答案排在搜索结果前几名的概率。</p></td><td><p>评估排序算法是否把最相关的放到了最前面。</p></td></tr>
+</tbody>
+</table>
+
+<h4><span id="第二层生成模块评测-generation">第二层：生成模块评测 (Generation)</span></h4><p>这一层评估大模型在拿到资料后，“解读和组织语言”的能力。</p>
+<ul>
+<li>**忠实度 (Faithfulness)**：回答是否完全依据检索到的资料，有没有凭空捏造（即“幻觉”检查）。</li>
+<li>**相关性 (Relevance)**：回答是否正面解决了用户提出的问题。</li>
+<li>**完整性 (Completeness)**：是否涵盖了资料中所有有助于回答问题的关键点。</li>
+</ul>
+<h4><span id="第三层端到端评测-end-to-end">第三层：端到端评测 (End-to-End)</span></h4><p>这是从用户视角进行的整体评估，最核心的指标是 <strong>问题解决率</strong>和 <strong>用户满意度</strong>。</p>
+<h3><span id="三rag-效果归因六步诊断法">（三）RAG 效果归因：六步诊断法</span></h3><p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/DIzNbDayXoYbWYxiNeDcuhBunMb.png"></p>
+<p>当 RAG 应用表现不如预期时，应按以下逻辑链条逐一排查，定位故障点：</p>
+<ol>
+<li>最终回答校验</li>
+</ol>
+<p>判断标准：回答是否准确、简洁并直接解决了用户问题。</p>
+<p>常见问题：回答过于冗长或包含无关信息。</p>
+<ol>
+<li>意图路由与处理路径</li>
+</ol>
+<p>判断标准：模型是否正确识别了用户意图（是需要检索知识库，还是直接回答，或是调用工具）。</p>
+<p>常见问题：意图识别错误导致未触发检索逻辑。</p>
+<ol>
+<li>检索内容相关性</li>
+</ol>
+<p>判断标准：检索出的文档块（Chunks）是否包含回答问题所需的关键信息。</p>
+<p>衡量指标：</p>
+<ul>
+<li>准确率 (Precision)：检索到的内容中有多少是相关的。</li>
+<li>召回率 (Recall)：知识库中相关的条目是否都被搜到了。</li>
+</ul>
+<ol>
+<li>召回结果排序 (Ranking)</li>
+</ol>
+<p>判断标准：最核心、最相关的文档块是否排在最前面。</p>
+<p>影响原因：相关信息被大量噪声掩盖，导致模型在处理长上下文时忽略了重点。</p>
+<ol>
+<li>问题改写 (Query Rewrite)</li>
+</ol>
+<p>判断标准：系统对原始问题的优化或向量化改写是否偏离了用户本意。</p>
+<p>常见问题：改写过度导致检索方向出现偏差。</p>
+<ol>
+<li>知识库质量</li>
+</ol>
+<p>判断标准：知识库本身是否包含正确答案，数据是否存在缺失、陈旧或冲突。</p>
+<p>解决方向：更新或清洗原始语料。</p>
+<p>归因结论：</p>
+<ul>
+<li>1-2 步异常：重点优化基座模型的能力或提示词（Prompt）。</li>
+<li>3-5 步异常：重点优化检索算法、Embedding 模型或排序模型（ReRank）。</li>
+<li>6 步异常：重点治理数据源。</li>
+</ul>
+<h3><span id="四改善rag效果">（四）改善RAG效果</span></h3><p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/JLcBbSijcod2GPxjQJEcucy5nOe.png"></p>
+<h4><span id="提升索引准确性数据处理层">提升索引准确性（数据处理层）</span></h4><p>索引质量决定了召回内容的上限。</p>
+<ul>
+<li><p><strong>优化文本解析</strong>：在构建知识库时，通过清洗 HTML 标签（如页眉页脚、广告位）保留核心文本和表格，确保语料纯净。</p>
+</li>
+<li><p><strong>优化 Chunk 切分</strong>：</p>
+<ul>
+<li><strong>固定切分</strong>：按固定词数（如 128&#x2F;512 词）切分，速度快但易破坏语义完整性。</li>
+<li><strong>上下文感知&#x2F;语义切分</strong>：基于自然语言处理（NLP）技术或模型识别语义单元，确保切分点在语义断点处，并保留前后句作为缓冲区。</li>
+</ul>
+</li>
+<li><p><strong>句子滑动窗口（Sliding Window）</strong>：检索时不仅提取匹配到的 Chunk，还自动提取其前后相邻的上下文窗口信息。</p>
+</li>
+<li><p><strong>自动合并检索（Auto-merging）</strong>：建立层级化的文档结构树。若检索到多个属于同一父节点的子节点，系统自动返回整个父节点内容，保证信息完整。</p>
+</li>
+<li><p><strong>混合检索（Hybrid Search）</strong>：结合 <strong>关键词检索</strong>（精确匹配）与 <strong>向量语义检索</strong>（意图匹配），通过调整两者权重平衡检索效果。</p>
+</li>
+</ul>
+<h4><span id="提升意图识别准确率查询处理层">提升意图识别准确率（查询处理层）</span></h4><p>针对用户原始提问的多样性和模糊性进行预处理。</p>
+<ul>
+<li><strong>Enrich（问题重写）</strong>：利用 LLM 将口语化问题改写为更专业、明确的查询语句。</li>
+<li><strong>Multi-Query（多路查询）</strong>：生成多个同义或相关的查询变体，从多个维度进行检索以提高召回率。</li>
+<li><strong>RAG-Fusion（排序融合）</strong>：对多路检索到的结果进行去重，并按照相关性重新排序。</li>
+<li><strong>Step Back（步退提问）</strong>：让模型先提炼问题的核心概念或摘要，从更高维度检索背景知识。</li>
+<li><strong>Decomposition（任务拆解）</strong>：将复杂的多步骤问题拆解为多个子问题，逐一检索并整合答案。</li>
+<li><strong>HyDE（假设文档嵌入）</strong>：先由模型生成一个“假设答案”，再用该答案的向量去检索真实的参考文档。</li>
+<li><strong>Self-RAG（自我反思）</strong>：模型在输出前进行三项自检：<ol>
+<li>检索到的资料与问题是否相关？</li>
+<li>生成的回答是否有事实依据（防幻觉）？</li>
+<li>回答是否真正解决了用户的问题？</li>
+</ol>
+</li>
+</ul>
+<h4><span id="增加信息提取途径数据源扩展">增加信息提取途径（数据源扩展）</span></h4><p>当本地私有知识库无法满足需求时，扩展获取信息的渠道。</p>
+<ul>
+<li><strong>CRAG（纠错检索）</strong>：引入外部搜索。当检索到的本地资料相关性低于阈值时，触发互联网搜索进行补充。</li>
+<li><strong>结构化查询（NL2SQL）</strong>：针对数据库中的数值或统计信息，将自然语言转为 SQL 语句直接查询数据库。</li>
+<li><strong>知识图谱（Knowledge Graph）</strong>：利用图数据库（如 Neo4j）查询实体间的关联关系，处理深层次的逻辑链路问题。</li>
+</ul>
+<h4><span id="模型层优化">模型层优化</span></h4><p>通过升级算法组件提升整体性能。</p>
+<ul>
+<li><strong>Embedding 模型</strong>：选择更擅长目标语言（如中文）或垂直领域的向量模型，提高语义映射的精准度。</li>
+<li><strong>ReRank 模型</strong>：对初筛出的候选 Chunk 进行二次精准排序，将最相关的资料排在最前面。</li>
+<li><strong>基座模型（LLM）</strong>：升级参数规模（如从 7B 升至 72B）或更换性能更强的模型（如从开源转向闭源商用模型），提升理解与推理能力。</li>
+</ul>
+<h2><span id="五-通过微调改善大模型在垂直领域的表现">五、通过微调改善大模型在垂直领域的表现</span></h2><p>微调指的是在预训练模型（Pre-trained Model）的基础上，使用特定领域的数据进行进一步训练。通过针对性补习，使模型更理解专业领域知识、符合特定业务需求。</p>
+<ul>
+<li><strong>数据规模小</strong>：相较于预训练，微调数据集量级较小。</li>
+<li><strong>训练时间短</strong>：模型已有预训练基础，无需从随机初始化开始。</li>
+</ul>
+<h3><span id="一微调的功能">（一）微调的功能</span></h3><h4><span id="实现功能">实现功能</span></h4><ul>
+<li><strong>风格化（角色扮演）</strong>：注入专业领域语料（如医疗文献、病例），使模型掌握特定术语和专家逻辑。</li>
+<li><strong>格式化（系统对接）</strong>：解决复杂 API 规范对接问题。<ul>
+<li><strong>RAG 的局限</strong>：文档结构复杂导致检索不准；上下文 Token 限制导致信息截断。</li>
+<li><strong>微调优势</strong>：使模型理解用户意图并输出符合 API 格式要求的指令，实现端到端自动化。</li>
+</ul>
+</li>
+</ul>
+<h4><span id="提高效率与降低成本">提高效率与降低成本</span></h4><ul>
+<li><strong>性能对标</strong>：通过微调小参数模型（如 Qwen-1.8B），使其在特定任务（如文本分类）上的表现接近大参数模型（如 Qwen-72B）。</li>
+<li><strong>优势</strong>：极大地改善推理速度，降低计算成本。</li>
+</ul>
+<h4><span id="微调的关键要素与风险">微调的关键要素与风险</span></h4><ul>
+<li><strong>高质量数据</strong>：微调效果高度依赖领域特定数据的质量、代表性及获取成本。</li>
+<li><strong>参数配置</strong>：需反复迭代寻找最优组合（如训练轮次、学习率）。</li>
+<li><strong>核心风险</strong>：<ul>
+<li><strong>过拟合（Overfitting）</strong>：在训练集表现极好，但在测试集或实际应用中泛化能力差。</li>
+<li><strong>欠拟合（Underfitting）</strong>：模型未充分学习，在训练和测试集表现均不佳。</li>
+<li><strong>灾难性遗忘</strong>：模型在掌握专项任务的同时，可能丧失通用处理能力。</li>
+</ul>
+</li>
+</ul>
+<h3><span id="二实施流程">（二）实施流程</span></h3><h4><span id="业务决策维度">业务决策维度</span></h4><ul>
+<li><strong>需求匹配度</strong>：是否涉及复杂语言理解、意图识别或高度特定领域的任务？</li>
+<li><strong>数据可用性</strong>：系统内是否有足够的标注数据？质量是否达标？</li>
+<li><strong>合规与隐私</strong>：是否符合法律法规（如 GDPR）？是否存在模型偏见风险？</li>
+<li><strong>资源投入</strong>：评估 GPU 资源、计算时间及专家人力成本，进行 ROI（成本效益）分析。</li>
+</ul>
+<h4><span id="标准化流程">标准化流程</span></h4><ul>
+<li><strong>数据准备</strong>：数据收集（交互记录、FAQ）与清洗（脱敏）。</li>
+<li><strong>模型选择</strong>：选择适合的预训练基座（如 Qwen-7B）。</li>
+<li><strong>模型微调</strong>：数据标注、运行微调程序、调整参数。</li>
+<li><strong>模型评测</strong>：准备评测集，观察输出并与预期结果对比。</li>
+<li><strong>模型集成</strong>：编写代码集成至业务流程，设定调用逻辑及错误处理。</li>
+<li><strong>测试优化</strong>：在开发&#x2F;测试环境验证 API 调用与性能。</li>
+<li><strong>部署监控</strong>：生产环境部署并监控模型性能及 API 健康状况。</li>
+<li><strong>持续迭代</strong>：根据用户反馈和新数据进行定期优化。</li>
+</ul>
+<h3><span id="三常见微调技术路径">（三）常见微调技术路径</span></h3><h4><span id="全参数微调full-fine-tuning">全参数微调（Full Fine-Tuning）</span></h4><ul>
+<li><strong>原理</strong>：调整模型内部所有层的所有参数。</li>
+<li><strong>优缺点</strong>：性能提升全面，但计算资源消耗巨大，训练成本极高。</li>
+</ul>
+<h4><span id="高效微调peft技术">高效微调（PEFT）技术</span></h4><h5><span id="lora-low-rank-adaptation"><strong>LoRA (Low-Rank Adaptation)</strong></span></h5><p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/TB5GbVtdmoZLNZx9YUbcVNXvneH.png"></p>
+<ul>
+<li><p><strong>原理</strong>：在原始权重矩阵旁增加一个旁路，通过低秩矩阵 $A$（降维）和 $B$（升维）的乘积来近似参数更新。</p>
+</li>
+<li><p><strong>参数压缩示例</strong>：</p>
+<ul>
+<li>原始矩阵 $M$ 维度：$1000 \times 1000$（100万参数）。</li>
+<li>LoRA（设秩 $r&#x3D;1$）：$A$ 矩阵 $1000 \times 1$，$B$ 矩阵 $1 \times 1000$。</li>
+<li>更新参数量：$1000 \times 1 + 1 \times 1000 &#x3D; 2000$。</li>
+<li><strong>结论</strong>：参数量减少了 $99.8%$。</li>
+</ul>
+</li>
+<li><p><strong>特性</strong>：目前最通用的方法，效果接近全参微调。</p>
+</li>
+</ul>
+<h5><span id="adapter-tuning"><strong>Adapter Tuning</strong></span></h5><p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/FckrbtZUOoDRrexSQP0cC8nzn1f.png"></p>
+<ul>
+<li><strong>原理</strong>：在 Transformer 结构中插入 Adapter 层，仅训练该层，原始参数冻结。</li>
+<li><strong>特性</strong>：仅需额外增加约 $3.6%$ 的参数即可达到接近全参微调的效果，但会引入推理延迟。</li>
+</ul>
+<h5><span id="prefix-tuning"><strong>Prefix Tuning</strong></span></h5><p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/Mpt8b6CiYoMjN8xKo5Ncvq4fngg.png"></p>
+<ul>
+<li><strong>原理</strong>：在输入 Token 前构造固定长度的任务相关虚拟 Token 作为前缀（Prefix），且作用于每一层 Transformer 隐藏层。</li>
+<li><strong>特性</strong>：避免灾难性遗忘，长序列生成表现优异，但会占用上下文窗口长度。</li>
+</ul>
+<h5><span id="prompt-tuning"><strong>Prompt Tuning</strong></span></h5><p><img src="../images/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AF%86/JE98bSP4AoF7WVxs27ccHaAVnzb.png"></p>
+<ul>
+<li><strong>原理</strong>：仅在输入层加入可训练的 Prompt Tokens 向量。</li>
+<li><strong>特性</strong>：极其轻量，随模型规模增大（如 T5）效果逼近全参微调，适合多任务适配。</li>
+</ul>
+<table>
+<colgroup>
+<col width="205">
+<col width="205">
+<col width="205">
+<col width="205">
+</colgroup>
+<tbody>
+<tr><td><p> <strong>方法</strong></p></td><td><p> <strong>推理延迟</strong></p></td><td><p> <strong>参数规模相关性</strong></p></td><td><p> <strong>主要局限</strong></p></td></tr>
+<tr><td><p> <strong>Adapter</strong></p></td><td><p>有明显延迟</p></td><td><p>不敏感</p></td><td><p>推理效率受限</p></td></tr>
+<tr><td><p> <strong>Prefix Tuning</strong></p></td><td><p>无延迟</p></td><td><p>随参数规模非单调变化</p></td><td><p>难以优化，占用 Token 空间</p></td></tr>
+<tr><td><p> <strong>Prompt Tuning</strong></p></td><td><p>无延迟</p></td><td><p>模型越大效果越好</p></td><td><p>不适合复杂生成任务</p></td></tr>
+<tr><td><p> <strong>LoRA</strong></p></td><td><p>无延迟</p></td><td><p>表现出极佳的可扩展性</p></td><td><p>需合理选择秩 $r$ 的大小</p></td></tr>
+</tbody>
+</table>
+
+<h2><span id="六-借助-agent-让大模型应用思考-决策并执行任务">六、借助 Agent 让大模型应用思考、决策并执行任务</span></h2><p>大模型 Agent 是基于大语言模型，能够使用工具与外部世界进行交互的计算机程序。一个典型的 Agent 通常由 <strong>感知、思考、行动</strong>三个环节组成，并具备 <strong>规划</strong>与 <strong>记忆</strong>能力。</p>
+<p>记忆是 Agent 生成计划、决策和内容的基础辅助。</p>
+<table>
+<colgroup>
+<col width="136">
+<col width="274">
+<col width="410">
+</colgroup>
+<tbody>
+<tr><td><p> <strong>记忆类型</strong></p></td><td><p> <strong>对应技术概念</strong></p></td><td><p> <strong>特点与局限</strong></p></td></tr>
+<tr><td><p> <strong>短期记忆</strong></p></td><td><p>上下文（Context）、历史对话、搜索反馈。</p></td><td><p>随会话结束而消失；受限于模型上下文长度。可能存在“近邻信息敏感（Recency问题）”，即对提示词末尾信息更敏感。</p></td></tr>
+<tr><td><p> <strong>长期记忆</strong></p></td><td><p>外部向量数据库、文档库、持久化业务记录。</p></td><td><p>可长期存储私有知识或专业领域信息，供 Agent 随时检索。</p></td></tr>
+</tbody>
+</table>
+
+<p>Agent 有规划能力，将复杂任务分解为可管理的步骤，是 Agent 处理高难度任务的核心。</p>
+<h3><span id="一任务分解方式">（一）任务分解方式</span></h3><ul>
+<li><p>**思维链 (CoT, Chain of Thought)**：</p>
+<ul>
+<li>通过提示词（如“一步一步思考”）引导模型进行线性拆解。</li>
+<li>在 Agent 模式下，不仅是提示词优化，还可结合计算器、代码解析器或循环迭代来逐步执行。</li>
+</ul>
+</li>
+<li><p>**思维树 (ToT, Tree of Thought)**：</p>
+<ul>
+<li>构建具有分支的选择树。在每个步骤生成多种方案，利用 <strong>深度搜索</strong>或 <strong>广度搜索</strong>选出最佳路径。</li>
+<li>适用于不确定性高、路径选择众多的复杂决策任务。</li>
+</ul>
+</li>
+<li><p>**思维图 (GoT, Graph of Thoughts)**：</p>
+<ul>
+<li>对思维树的工程优化。允许在执行中 <strong>回溯</strong>、对错误方案进行 <strong>剪枝</strong>或合并相同执行节点。</li>
+</ul>
+</li>
+<li><p>**XoT (Everything of Thoughts)**：</p>
+<ul>
+<li>整合各种分解方案，引入强化学习、蒙特卡洛搜索及外部领域知识的终极框架。</li>
+</ul>
+</li>
+</ul>
+<h3><span id="二推理-行动与反思react-框架">（二）推理、行动与反思（ReAct 框架）</span></h3><p>为了确保结果符合需求，Agent 需要在输出前进行自我审视和环境反馈。</p>
+<h4><span id="react-核心逻辑">ReAct 核心逻辑</span></h4><p>ReAct 是  <strong>Reasoning（推理）</strong> 与  <strong>Acting（行动）</strong> 的协同过程，形成“ <strong>思考-行动-观察</strong>”的闭环。</p>
+<ol>
+<li><strong>判断</strong>：模型分析是否能直接回答问题。</li>
+<li><strong>选择</strong>：若不能，从工具列表中选择合适工具。</li>
+<li><strong>调用</strong>：生成带参数的指令，由主体程序调用工具。</li>
+<li><strong>观察</strong>：收集工具执行结果。</li>
+<li><strong>迭代</strong>：结合环境反馈再次推理，直至解决问题或给出最终答案。</li>
+</ol>
+<h4><span id="react-提示词模版-langchain-示例">ReAct 提示词模版 (LangChain 示例)</span></h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Use the following format:</span><br><span class="line">Question: the input question you must answer</span><br><span class="line">Thought: you should always think about what to do</span><br><span class="line">Action: the action to take, should be one of [&#123;tool_names&#125;]</span><br><span class="line">Action Input: the input to the action</span><br><span class="line">Observation: the result of the action</span><br><span class="line">... (this Thought/Action/Action Input/Observation can repeat N times)</span><br><span class="line">Thought: I now know the final answer</span><br><span class="line">Final Answer: the final answer to the original input question</span><br></pre></td></tr></table></figure>
+
+<h3><span id="三agent-与普通大模型的区别">（三）Agent 与普通大模型的区别</span></h3><ol>
+<li><strong>交互性</strong>：Agent 不局限于文字输出，能通过工具执行物理动作（发邮件、写代码、下单等）。</li>
+<li><strong>主动性</strong>：不再是被动回答，而是自主拆解任务、主动纠错、闭环完成任务。</li>
+<li><strong>复杂性</strong>：能够胜任系统性工作（如建站、开发游戏），而非碎片化问答。</li>
+<li><strong>进化性</strong>：通过长期记忆实现自我迭代，吸取历史对话中的经验和要求。</li>
+<li><strong>专业性</strong>：通过接入特定领域的知识库和工具，完成垂直领域的深度任务。</li>
+</ol>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/%E7%BD%91%E9%A1%B5%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%95/"
+      title="网页读书记录"
+     >
+
+    <p class="title-text">
+      
+        网页读书记录
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+  
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <div id="comment-card" class="comment-card">
+    <div class="main-title-bar">
+      <div class="main-title-dot"></div>
+      <div class="main-title">Comments </div>
+    </div>
+    <div id="vcomments"></div>
+  </div>
+  <script>
+      new Valine({"enable":true,"appId":"d11b0rzmnr3P1GXZJHaOnfZg-gzGzoHsz","appKey":"jIiUmjPo1tMCjSeccu3gIDEQ","placeholder":"说点什么~","pageSize":10,"highlight":true,"serverURLs":null,"el":"#vcomments"});
+  </script>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2026 林雪糕<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
+
+<canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+<script src="/js/background.min.js"></script>
