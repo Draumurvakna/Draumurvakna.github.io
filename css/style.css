@@ -2854,6 +2854,36 @@ input[type="range"] {
   -ms-transition: background 0.15s ease-out;
   transition: background 0.15s ease-out;
 }
+.blog-search {
+  padding: 12px 0 8px;
+}
+.blog-search-intro {
+  margin: 0 0 20px;
+  color: var(--secondary-font-color);
+  font-size: 0.95rem;
+}
+#blog-search {
+  --pagefind-ui-scale: 0.9;
+  --pagefind-ui-primary: var(--theme-color);
+  --pagefind-ui-text: var(--primary-font-color);
+  --pagefind-ui-background: var(--card-background);
+  --pagefind-ui-border: var(--border-color);
+  --pagefind-ui-tag: var(--tag-background);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 8px;
+  --pagefind-ui-font: inherit;
+}
+#blog-search .pagefind-ui__search-input {
+  background: var(--card-background);
+  color: var(--primary-font-color);
+}
+#blog-search .pagefind-ui__result-link,
+#blog-search .pagefind-ui__result-nested {
+  color: var(--theme-color);
+}
+#blog-search .pagefind-ui__message {
+  color: var(--secondary-font-color);
+}
 #sidebar {
   width: 100% !important;
   height: 100%;
