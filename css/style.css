@@ -1359,15 +1359,42 @@ a.article-title:active {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
+  font-size: 0.95em;
+}
+.article-entry .article-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 1.2em 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.article-entry .article-table-scroll table {
+  margin: 0;
+}
+.article-entry .article-table-scroll table.article-table-wide {
+  min-width: 1050px;
 }
 .article-entry th {
   font-weight: bold;
   border-bottom: 3px solid #ddd;
-  padding-bottom: 0.5em;
+  padding: 0.65em 0.75em;
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
 }
 .article-entry td {
   border-bottom: 1px solid #ddd;
-  padding: 10px 0;
+  padding: 0.65em 0.75em;
+  vertical-align: top;
+}
+@media screen and (max-width: 767px) {
+  .article-entry table {
+    font-size: 0.9em;
+  }
+  .article-entry .article-table-scroll table.article-table-wide {
+    min-width: 720px;
+  }
 }
 .article-entry blockquote {
   background: var(--blockquote-bg);
